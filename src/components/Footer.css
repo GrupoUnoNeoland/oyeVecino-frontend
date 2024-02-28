@@ -1,0 +1,9 @@
+#footer-container {
+  background-color: #38362b;
+  min-height: 150px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
