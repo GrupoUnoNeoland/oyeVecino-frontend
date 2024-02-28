@@ -1,7 +1,5 @@
 import { extraConfig } from "./serviceApiOyeVecino.config";
 
-//!---------CREATE NEIGHBORHOOD:
-
 export const createNeighborhood = async (formData) => {
   const APINeighborhood = extraConfig();
 
@@ -12,8 +10,6 @@ export const createNeighborhood = async (formData) => {
     .catch((error) => error);
 };
 
-//!----------DELETE NEIGHBORHOOD:
-
 export const deleteNeighborhood = async (neighborhoodId) => {
   const APINeighborhood = extraConfig();
 
@@ -21,8 +17,6 @@ export const deleteNeighborhood = async (neighborhoodId) => {
     .then((res) => res)
     .catch((error) => error);
 };
-
-//!-----------UPDATE NEIGHBORHOOD:
 
 export const updateNeighborhood = async (formData, neighborhoodId) => {
   const APINeighborhood = extraConfig();
@@ -37,7 +31,6 @@ export const updateNeighborhood = async (formData, neighborhoodId) => {
     .then((res) => res)
     .catch((error) => error);
 };
-//!----------GET BY ID:
 
 export const getByIdNeighborhood = async (neighborhoodId) => {
   const APINeighborhood = extraConfig();
@@ -47,8 +40,6 @@ export const getByIdNeighborhood = async (neighborhoodId) => {
     .catch((error) => error);
 };
 
-//!----------GET ALL:
-
 export const getAllNeighborhood = async () => {
   const APINeighborhood = extraConfig();
 
@@ -57,8 +48,6 @@ export const getAllNeighborhood = async () => {
     .catch((error) => error);
 };
 
-//!----------TOGGLE USERS:
-
 export const toggleUsersInNeighborhood = async (userId, neighborhoodId) => {
   const APINeighborhood = extraConfig();
 
@@ -66,8 +55,6 @@ export const toggleUsersInNeighborhood = async (userId, neighborhoodId) => {
     .then((res) => res)
     .catch((error) => error);
 };
-
-//!-------------TOGGLE SERVICES:
 
 export const toggleServicesInNeighborhood = async (
   serviceId,
@@ -83,8 +70,6 @@ export const toggleServicesInNeighborhood = async (
     .catch((error) => error);
 };
 
-//!---------------TOGGLE EVENTS:
-
 export const toggleEventsInNeighborhood = async (eventId, neighborhoodId) => {
   const APINeighborhood = extraConfig();
 
@@ -95,8 +80,6 @@ export const toggleEventsInNeighborhood = async (eventId, neighborhoodId) => {
     .then((res) => res)
     .catch((error) => error);
 };
-
-//!---------TOGGLE STATEMENTS:
 
 export const toggleStatementsInNeighborhood = async (
   statementId,
@@ -111,8 +94,6 @@ export const toggleStatementsInNeighborhood = async (
     .then((res) => res)
     .catch((error) => error);
 };
-
-//!---------TOGGLE CITY:
 
 export const toggleCityInNeighborhood = async (cityId, neighborhoodId) => {
   const APINeighborhood = extraConfig();
