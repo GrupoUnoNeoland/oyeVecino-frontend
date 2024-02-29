@@ -5,15 +5,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 20px;
+  padding-right: 20px;
   position: fixed;
   z-index: 3;
   -webkit-box-shadow: 5px -1px 19px -1px rgba(126, 127, 133, 1);
   -moz-box-shadow: 5px -1px 19px -1px rgba(126, 127, 133, 1);
   box-shadow: 5px -1px 19px -1px rgba(126, 127, 133, 1);
-  /* top: 0;
-  left: 0; */
 
   & .header-logo {
     height: 70px;
@@ -37,5 +35,12 @@
       cursor: pointer;
       border-bottom: 2px solid var(--mutard-bg-color);
     }
+  }
+}
+
+@media(min-width: 700px) {
+  #header-container {
+    padding-left: 150px;
+    padding-right: 150px;
   }
 }
