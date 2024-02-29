@@ -1,4 +1,4 @@
-import { extraConfig } from "./serviceApiUser.config";
+import { extraConfig } from './serviceApiUser.config';
 
 //!-----------------CREATE----------------------------------------
 

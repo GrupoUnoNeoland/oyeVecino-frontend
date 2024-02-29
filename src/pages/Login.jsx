@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import "./Login.css";
-import { Link, Navigate } from "react-router-dom";
-import { useAuth } from "../context/authContext";
-import { loginUser } from "../services/user.service";
-import { useLoginError } from "../hooks";
+import './Login.css';
+
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, Navigate } from 'react-router-dom';
+
+import { useAuth } from '../context/authContext';
+import { useLoginError } from '../hooks';
+import { loginUser } from '../services/user.service';
 
 export const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -14,7 +16,7 @@ export const Login = () => {
   const { login, setUser } = useAuth();
 
   const formSubmit = async (formData) => {
-    console.log("FORMDATA", formData);
+    console.log('FORMDATA', formData);
     setSend(true);
     setRes(await loginUser(formData));
     setSend(false);
@@ -27,7 +29,7 @@ export const Login = () => {
 
   useEffect(() => {
     setUser(() => null);
-    localStorage.removeItem("user");
+    localStorage.removeItem('user');
   }, []);
 
   if (loginOk) {
@@ -49,7 +51,7 @@ export const Login = () => {
               id="email"
               name="email"
               autoComplete="false"
-              {...register("email", { required: true })}
+              {...register('email', { required: true })}
             />
             <label htmlFor="custom-input" className="custom-placeholder">
               email
@@ -62,7 +64,7 @@ export const Login = () => {
               id="password"
               name="password"
               autoComplete="false"
-              {...register("password", { required: true })}
+              {...register('password', { required: true })}
             />
             <label htmlFor="custom-input" className="custom-placeholder">
               password
@@ -73,7 +75,7 @@ export const Login = () => {
               className="btn"
               type="submit"
               disabled={send}
-              style={{ background: send ? "#666" : "#333" }}
+              style={{ background: send ? '#666' : '#333' }}
             >
               LOGIN
             </button>

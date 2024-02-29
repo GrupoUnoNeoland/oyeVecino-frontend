@@ -1,10 +1,10 @@
-import { extraConfig } from "./serviceApiOyeVecino.config";
+import { extraConfig } from './serviceApiOyeVecino.config';
 
 export const createMessage = async (formData, recipientId) => {
   const APIMessage = extraConfig();
 
   return APIMessage.post(`/${recipientId}`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -14,7 +14,7 @@ export const updateMessage = async (formData, messageId) => {
   const APIMessage = extraConfig();
 
   return APIMessage.patch(`/update/${messageId}`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);

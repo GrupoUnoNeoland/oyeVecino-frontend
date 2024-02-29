@@ -1,4 +1,4 @@
-import Swal from "sweetalert2/dist/sweetalert2.all.js";
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 export const useLoginError = (res, setRes, userLogin, setLoginOk) => {
   //! -----------------200
 
@@ -22,9 +22,9 @@ export const useLoginError = (res, setRes, userLogin, setLoginOk) => {
     setLoginOk(() => true);
 
     Swal.fire({
-      icon: "success",
-      title: "Welcome to my Page",
-      text: "Login ok ✅",
+      icon: 'success',
+      title: 'Welcome to my Page',
+      text: 'Login ok ✅',
       showConfirmButton: false,
       timer: 1500,
     });
@@ -32,12 +32,12 @@ export const useLoginError = (res, setRes, userLogin, setLoginOk) => {
 
   //! ----------------- 404: 'User no register'
 
-  if (res?.response?.data?.includes("User no register")) {
+  if (res?.response?.data?.includes('User no register')) {
     setRes(() => ({}));
     Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Unregistered user ❎",
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Unregistered user ❎',
       showConfirmButton: false,
       timer: 1500,
     });
@@ -45,12 +45,12 @@ export const useLoginError = (res, setRes, userLogin, setLoginOk) => {
 
   //!------------------ 404: 'password dont match'
 
-  if (res?.response?.data?.includes("password dont match")) {
+  if (res?.response?.data?.includes('password dont match')) {
     setRes(() => ({}));
     Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Password dont match ❎",
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Password dont match ❎',
       showConfirmButton: false,
       timer: 1500,
     });
@@ -60,9 +60,9 @@ export const useLoginError = (res, setRes, userLogin, setLoginOk) => {
   if (res?.response?.status == 500) {
     setRes(() => ({}));
     Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Interval Server Error ❎!",
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Interval Server Error ❎!',
       showConfirmButton: false,
       timer: 1500,
     });

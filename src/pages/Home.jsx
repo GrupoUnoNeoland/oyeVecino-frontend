@@ -1,6 +1,8 @@
-import "./Home.css";
-import { Footer } from "../components";
-import React from "react";
+import './Home.css';
+
+import React from 'react';
+
+import { Footer } from '../components';
 
 export const Home = () => {
   return (
@@ -21,11 +23,11 @@ export const Home = () => {
                 Bienvenido a tu Red Social del Vecindario
               </h2>
               <p>
-                OYE VECINO es la plataforma digital que te conecta con la
-                comunidad que te rodea de una manera única y atractiva. Esta red
-                social exclusiva está diseñada para fortalecer los lazos entre
-                vecinos, proporcionando una experiencia interactiva que va más
-                allá de las fronteras físicas de las casas.
+                OYE VECINO es la plataforma digital que te conecta con la comunidad que te
+                rodea de una manera única y atractiva. Esta red social exclusiva está
+                diseñada para fortalecer los lazos entre vecinos, proporcionando una
+                experiencia interactiva que va más allá de las fronteras físicas de las
+                casas.
               </p>
             </div>
           </div>
@@ -45,12 +47,11 @@ export const Home = () => {
               <div className="third-section__card-text">
                 <h3>Eventos</h3>
                 <p>
-                  Comparte y descubre eventos emocionantes que suceden en tu
-                  vecindario.
+                  Comparte y descubre eventos emocionantes que suceden en tu vecindario.
                 </p>
                 <p>
-                  Organiza fiestas en la calle, ferias locales, encuentros
-                  comunitarios y mucho más.
+                  Organiza fiestas en la calle, ferias locales, encuentros comunitarios y
+                  mucho más.
                 </p>
               </div>
             </figure>
@@ -59,9 +60,8 @@ export const Home = () => {
               <div className="third-section__card-text">
                 <h3>Comunicados</h3>
                 <p>
-                  Recibe y comparte comunicados importantes de la administración
-                  del barrio, manteniendo a todos informados sobre cuestiones
-                  relevantes.
+                  Recibe y comparte comunicados importantes de la administración del
+                  barrio, manteniendo a todos informados sobre cuestiones relevantes.
                 </p>
               </div>
             </figure>
@@ -70,12 +70,11 @@ export const Home = () => {
               <div className="third-section__card-text">
                 <h3>Servicios</h3>
                 <p>
-                  Facilita la colaboración entre vecinos al ofrecer tus
-                  servicios o solicitar ayuda.
+                  Facilita la colaboración entre vecinos al ofrecer tus servicios o
+                  solicitar ayuda.
                 </p>
                 <p>
-                  Encuentra profesionales locales garantizando una red de apoyo
-                  confiable.
+                  Encuentra profesionales locales garantizando una red de apoyo confiable.
                 </p>
               </div>
             </figure>
@@ -84,8 +83,8 @@ export const Home = () => {
               <div className="third-section__card-text">
                 <h3>Mensajes Directos</h3>
                 <p>
-                  Comunícate directamente con otros vecinos para discutir
-                  eventos, intercambiar información o coordinar servicios.
+                  Comunícate directamente con otros vecinos para discutir eventos,
+                  intercambiar información o coordinar servicios.
                 </p>
               </div>
             </figure>

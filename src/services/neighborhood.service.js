@@ -1,10 +1,10 @@
-import { extraConfig } from "./serviceApiOyeVecino.config";
+import { extraConfig } from './serviceApiOyeVecino.config';
 
 export const createNeighborhood = async (formData) => {
   const APINeighborhood = extraConfig();
 
   return APINeighborhood.post(`/neighborhoods/`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -21,13 +21,9 @@ export const deleteNeighborhood = async (neighborhoodId) => {
 export const updateNeighborhood = async (formData, neighborhoodId) => {
   const APINeighborhood = extraConfig();
 
-  return APINeighborhood.patch(
-    `/neighborhoods/update/${neighborhoodId}`,
-    formData,
-    {
-      headers: { "Content-Type": "multipart/form-data" },
-    }
-  )
+  return APINeighborhood.patch(`/neighborhoods/update/${neighborhoodId}`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  })
     .then((res) => res)
     .catch((error) => error);
 };
@@ -56,16 +52,10 @@ export const toggleUsersInNeighborhood = async (userId, neighborhoodId) => {
     .catch((error) => error);
 };
 
-export const toggleServicesInNeighborhood = async (
-  serviceId,
-  neighborhoodId
-) => {
+export const toggleServicesInNeighborhood = async (serviceId, neighborhoodId) => {
   const APINeighborhood = extraConfig();
 
-  return APINeighborhood.patch(
-    `/neighborhoods/add/services/${neighborhoodId}`,
-    serviceId
-  )
+  return APINeighborhood.patch(`/neighborhoods/add/services/${neighborhoodId}`, serviceId)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -73,23 +63,17 @@ export const toggleServicesInNeighborhood = async (
 export const toggleEventsInNeighborhood = async (eventId, neighborhoodId) => {
   const APINeighborhood = extraConfig();
 
-  return APINeighborhood.patch(
-    `/neighborhoods/add/events/${neighborhoodId}`,
-    eventId
-  )
+  return APINeighborhood.patch(`/neighborhoods/add/events/${neighborhoodId}`, eventId)
     .then((res) => res)
     .catch((error) => error);
 };
 
-export const toggleStatementsInNeighborhood = async (
-  statementId,
-  neighborhoodId
-) => {
+export const toggleStatementsInNeighborhood = async (statementId, neighborhoodId) => {
   const APINeighborhood = extraConfig();
 
   return APINeighborhood.patch(
     `/neighborhoods/add/statements/${neighborhoodId}`,
-    statementId
+    statementId,
   )
     .then((res) => res)
     .catch((error) => error);
@@ -98,10 +82,7 @@ export const toggleStatementsInNeighborhood = async (
 export const toggleCityInNeighborhood = async (cityId, neighborhoodId) => {
   const APINeighborhood = extraConfig();
 
-  return APINeighborhood.patch(
-    `/neighborhoods/add/city/${neighborhoodId}`,
-    cityId
-  )
+  return APINeighborhood.patch(`/neighborhoods/add/city/${neighborhoodId}`, cityId)
     .then((res) => res)
     .catch((error) => error);
 };

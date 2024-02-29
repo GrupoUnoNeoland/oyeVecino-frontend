@@ -1,11 +1,11 @@
-import { extraConfig } from "./serviceApiUser.config";
+import { extraConfig } from './serviceApiUser.config';
 
 //!-----------------CREATE----------------------------------------
 
 export const createStatement = async (formData) => {
   const APIStatement = extraConfig();
-  return APIStatement.post("/statements/create", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return APIStatement.post('/statements/create', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -24,7 +24,7 @@ export const deleteStatement = async (statementId) => {
 
 export const getAllStatements = async () => {
   const APIStatement = extraConfig();
-  return APIStatement.get("/statements/")
+  return APIStatement.get('/statements/')
     .then((res) => res)
     .catch((error) => error);
 };
@@ -42,8 +42,8 @@ export const getByIdStatements = async (statementId) => {
 
 export const updateStatements = async (formData) => {
   const APIStatement = extraConfig();
-  return APIStatement.post("/statements/create", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return APIStatement.post('/statements/create', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -53,7 +53,7 @@ export const updateStatements = async (formData) => {
 
 export const getAllLikeStatement = async () => {
   const APIStatement = extraConfig();
-  return APIStatement.get("/statements/getalllikes")
+  return APIStatement.get('/statements/getalllikes')
     .then((res) => res)
     .catch((error) => error);
 };
@@ -69,10 +69,7 @@ export const toggleCityInStatement = async (cityId, statement) => {
 
 //!-------------------TOGGLE NEIGHBORHOOD--------------------------------------
 
-export const toggleNeighborhoodInStatement = async (
-  neighborhoodId,
-  statement
-) => {
+export const toggleNeighborhoodInStatement = async (neighborhoodId, statement) => {
   const APIStatement = extraConfig();
   return APIStatement.patch(`/add/neighborhoods/${statement}`, neighborhoodId)
     .then((res) => res)

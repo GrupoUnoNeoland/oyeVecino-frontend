@@ -1,10 +1,10 @@
-import { extraConfig } from "./serviceApiOyeVecino.config";
+import { extraConfig } from './serviceApiOyeVecino.config';
 
 export const registerUser = async (formData) => {
   const APIUser = extraConfig();
 
   return APIUser.post(`users/register`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -14,7 +14,7 @@ export const registerAdmin = async (formData) => {
   const APIUser = extraConfig();
 
   return APIUser.post(`/registeradmin`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -47,7 +47,7 @@ export const checkCodeNewUser = async (formData) => {
 export const loginUser = async (formData) => {
   const APIUser = extraConfig();
 
-  return APIUser.post(`users/login`, formData)
+  return APIUser.post('users/login', formData)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -80,7 +80,7 @@ export const updateUser = async (formData) => {
   const APIUser = extraConfig();
 
   return APIUser.patch(`/update/update`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);

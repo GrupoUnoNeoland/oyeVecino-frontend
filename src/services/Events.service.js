@@ -1,11 +1,11 @@
-import { extraConfig } from "./serviceApiUser.config";
+import { extraConfig } from './serviceApiUser.config';
 
 //!-----------------CREATE----------------------------------------
 
 export const createEvents = async (formData) => {
   const APIEvent = extraConfig();
-  return APIEvent.post("/events/create", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return APIEvent.post('/events/create', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -24,7 +24,7 @@ export const deleteEvents = async (eventId) => {
 
 export const getAllEvents = async () => {
   const APIEvent = extraConfig();
-  return APIEvent.get("/events/")
+  return APIEvent.get('/events/')
     .then((res) => res)
     .catch((error) => error);
 };
@@ -42,8 +42,8 @@ export const getByIdEvents = async (eventId) => {
 
 export const updateEvents = async (formData) => {
   const APIEvent = extraConfig();
-  return APIEvent.post("/events/create", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return APIEvent.post('/events/create', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -53,7 +53,7 @@ export const updateEvents = async (formData) => {
 
 export const getAllLikeEvents = async () => {
   const APIEvent = extraConfig();
-  return APIEvent.get("/events/getalllikes")
+  return APIEvent.get('/events/getalllikes')
     .then((res) => res)
     .catch((error) => error);
 };

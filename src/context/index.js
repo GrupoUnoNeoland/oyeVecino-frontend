@@ -1,1 +1,1 @@
-export * from "./authContext.jsx"
+export * from './authContext.jsx';
