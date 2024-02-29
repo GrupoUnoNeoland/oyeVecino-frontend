@@ -2,7 +2,7 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import App from '../App';
-import { Home, Login, Register } from '../pages';
+import { CheckCode, Home, Login, Register } from '../pages/index';
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />,
+      },
+      {
+        path: '/checkCode',
+        element: <CheckCode />,
       },
     ],
   },
