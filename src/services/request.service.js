@@ -1,10 +1,10 @@
-import { extraConfig } from "./serviceApiOyeVecino.config";
+import { extraConfig } from './serviceApiOyeVecino.config';
 
 // ------------- create request
 export const createRequest = async (formData) => {
   const APIRequest = extraConfig();
-  return APIRequest.post("requests/create", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return APIRequest.post('requests/create', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);

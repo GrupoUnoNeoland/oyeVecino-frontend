@@ -1,10 +1,10 @@
-import { extraConfig } from "./serviceApiOyeVecino.config";
+import { extraConfig } from './serviceApiOyeVecino.config';
 
 // ------------- create service
 export const createService = async (formData) => {
   const APIService = extraConfig();
-  return APIService.post("/service/create", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return APIService.post('/service/create', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -31,10 +31,7 @@ export const toggleUserServiceOffered = async (serviceId) => {
 
 export const toggleUsersServiceDemanded = async (serviceId, formData) => {
   const APIService = extraConfig();
-  return APIService.patch(
-    `services/add/users/serviceoffered/${serviceId}`,
-    formData
-  )
+  return APIService.patch(`services/add/users/serviceoffered/${serviceId}`, formData)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -88,7 +85,7 @@ export const getByNameServices = async (title) => {
 export const updateServices = async (serviceId, formData) => {
   const APIService = extraConfig();
   return APIService.patch(`services/update/service/${serviceId}`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
