@@ -1,3 +1,4 @@
+import React from 'react';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 export const useRegisterError = (res, setRegisterOk, setRes) => {
