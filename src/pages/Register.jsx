@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import './Register.css';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
@@ -58,7 +59,13 @@ export const Register = () => {
         <h1>Sign Up</h1>
         <p>It’s free and only takes a minute.</p>
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="user_container form-group">
+          <div className="roles_container">
+            <select id="rol" name="rol">
+              <option value="vecino">Vecino</option>
+              <option value="comercio">Comercio</option>
+            </select>
+          </div>
+          <div className="user_container">
             <input
               className="input_user"
               type="text"
@@ -71,7 +78,7 @@ export const Register = () => {
               username
             </label>
           </div>
-          <div className="password_container form-group">
+          <div className="password_container">
             <input
               className="input_user"
               type="password"
@@ -85,7 +92,7 @@ export const Register = () => {
             </label>
           </div>
 
-          <div className="email_container form-group">
+          <div className="email_container">
             <input
               className="input_user"
               type="email"
@@ -97,36 +104,60 @@ export const Register = () => {
             <label htmlFor="custom-input" className="custom-placeholder">
               email
             </label>
-
-            <div className="cif">
-              <input type="text" name="cif" id="cif" {...register('cif')} maxLength="9" />
-              <label htmlFor="cif" className="label-cif">
-                CIF
-              </label>
-              <input type="text" name="adress" id="adress" {...register('adress')} />
-              <label htmlFor="adress" className="label-adress">
-                Dirección
-              </label>
-              <input type="number" name="age" id="age" {...register('age')} />
-              <label htmlFor="age" className="label-age">
-                Edad
-              </label>
-              <input
-                type="text"
-                name="description"
-                id="description"
-                {...register('description')}
-              />
-              <label htmlFor="description" className="label-description">
-                Descripción
-              </label>
-               <input type="number" name="telephone" id="telephone" {...register('telephone')} />
-              <label htmlFor="telephone" className="label-telephone">
-                Teléfono
-              </label>
-            </div>
-            <Uploadfile />
           </div>
+          <div className="cif_container">
+            <input type="text" name="cif" id="cif" {...register('cif')} maxLength="9" />
+            <label htmlFor="cif" className="label-cif">
+              CIF
+            </label>
+          </div>
+          <div className="adress_container">
+            <input
+              type="text"
+              name="adress"
+              id="adress"
+              {...register('adress', { required: true })}
+            />
+            <label htmlFor="adress" className="label-adress">
+              Dirección
+            </label>
+          </div>
+          <div className="genders_container">
+            <select id="genero" name="gender" {...register('gender', { required: true })}>
+              <option value="hombre">Hombre</option>
+              <option value="mujer">Mujer</option>
+              <option value="otros">Otros</option>
+            </select>
+          </div>
+          <div className="age_container">
+            <input type="text" name="age" id="age" {...register('age')} />
+            <label htmlFor="age" className="label-age">
+              Edad
+            </label>
+          </div>
+          <div className="description_container">
+            <input
+              type="text"
+              name="description"
+              id="description"
+              {...register('description')}
+            />
+            <label htmlFor="description" className="label-description">
+              Descripción
+            </label>
+          </div>
+          <div className="telephone_container">
+            <input
+              type="text"
+              name="telephone"
+              id="telephone"
+              {...register('telephone')}
+            />
+            <label htmlFor="telephone" className="label-telephone">
+              Teléfono
+            </label>
+          </div>
+          <Uploadfile />
 
           <div className="btn_container">
             <button
