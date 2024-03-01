@@ -1,5 +1,5 @@
 #footer-container {
-  background-color: #38362b;
+  background-color: var(--black-bg-color);
   min-height: 150px;
   width: 100vw;
   display: flex;
