@@ -1,10 +1,10 @@
-import { extraConfig } from "./serviceApiOyeVecino.config";
+import { extraConfig } from './serviceApiOyeVecino.config';
 
 // ------------- create city
 export const createCity = async (formData) => {
   const APICity = extraConfig();
-  return APICity.post("cities/create", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return APICity.post('cities/create', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
@@ -58,7 +58,7 @@ export const getAllCity = async () => {
 export const updateCity = async (cityId, formData) => {
   const APICity = extraConfig();
   return APICity.patch(`cities/update/${cityId}`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
     .catch((error) => error);
