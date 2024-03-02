@@ -1,5 +1,5 @@
 import './Register.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ export const Register = () => {
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
   const [okRegister, setOkRegister] = useState(false);
+  const [rol, setRol] = useState("vecino")
   const navigate = useNavigate();
 
   const formSubmit = async (formData) => {
@@ -35,6 +36,14 @@ export const Register = () => {
     }
   };
 
+  const handleRoleClick = (rol) => {
+    if(rol == "vecino") {
+      setRol("vecino")
+    } else {
+      setRol("comercio")
+    }
+  }
+
   useEffect(() => {
     console.log(res);
     useRegisterError(res, setOkRegister, setRes);
@@ -54,17 +63,12 @@ export const Register = () => {
   }
 
   return (
-    <>
+    <div id="register-container">
       <div className="form-wrap">
         <h1>Sign Up</h1>
         <p>It’s free and only takes a minute.</p>
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="roles_container">
-            <select id="rol" name="rol">
-              <option value="vecino">Vecino</option>
-              <option value="comercio">Comercio</option>
-            </select>
-          </div>
+          <div className="roles_options"><p className={rol == "vecino" ? "clicked" : ""} onClick={()=>handleRoleClick("vecino")}>Vecino</p><p  className={rol == "comercio" ? "clicked" : ""} onClick={()=>handleRoleClick("comercio")}>Comercio</p></div>
           <div className="user_container">
             <input
               className="input_user"
@@ -91,7 +95,6 @@ export const Register = () => {
               password
             </label>
           </div>
-
           <div className="email_container">
             <input
               className="input_user"
@@ -105,14 +108,15 @@ export const Register = () => {
               email
             </label>
           </div>
-          <div className="cif_container">
-            <input type="text" name="cif" id="cif" {...register('cif')} maxLength="9" />
+          {rol == "comercio" && <div className="cif_container">
+            <input className="input_user" type="text" name="cif" id="cif" {...register('cif')} maxLength="9" />
             <label htmlFor="cif" className="label-cif">
               CIF
             </label>
-          </div>
+          </div>}
+          
           <div className="adress_container">
-            <input
+            <input className="input_user" 
               type="text"
               name="adress"
               id="adress"
@@ -122,6 +126,7 @@ export const Register = () => {
               Dirección
             </label>
           </div>
+          {rol == "vecino" && <div className="gender-age-container">
           <div className="genders_container">
             <select id="genero" name="gender" {...register('gender', { required: true })}>
               <option value="hombre">Hombre</option>
@@ -129,14 +134,16 @@ export const Register = () => {
               <option value="otros">Otros</option>
             </select>
           </div>
-          <div className="age_container">
-            <input type="text" name="age" id="age" {...register('age')} />
-            <label htmlFor="age" className="label-age">
+          <div className="age_container">            
+          <label htmlFor="age" className="label-age">
               Edad
             </label>
+            <input className="input_age" type="text" name="age" id="age" {...register('age')} />
           </div>
+          </div>}
+          
           <div className="description_container">
-            <input
+            <input className="input_user"
               type="text"
               name="description"
               id="description"
@@ -148,6 +155,7 @@ export const Register = () => {
           </div>
           <div className="telephone_container">
             <input
+             className="input_user"
               type="text"
               name="telephone"
               id="telephone"
@@ -164,7 +172,7 @@ export const Register = () => {
               className="btn"
               type="submit"
               disabled={send}
-              style={{ background: send ? '#49c1a388' : '#2f7a67' }}
+              style={{ background: send ? '#4b4848' : '#000000' }}
             >
               Register
             </button>
@@ -183,6 +191,6 @@ export const Register = () => {
           Already have an account? <Link to="/login">Login Here</Link>
         </p>
       </div>
-    </>
+    </div>
   );
 };
