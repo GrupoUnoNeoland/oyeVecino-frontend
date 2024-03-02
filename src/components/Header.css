@@ -38,7 +38,7 @@
   }
 }
 
-@media(min-width: 700px) {
+@media (min-width: 700px) {
   #header-container {
     padding-left: 150px;
     padding-right: 150px;
