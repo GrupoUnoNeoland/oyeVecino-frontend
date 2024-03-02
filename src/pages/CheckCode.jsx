@@ -120,9 +120,9 @@ export const CheckCode = () => {
   }
 
   return (
-    <>
+    <div id="checkcode-container">
       <div className="form-wrap">
-        <h1>Verifica tu código 👌</h1>
+        <h1>Verifica tu código</h1>
         <p>Escribe el código enviado a tu correo</p>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="user_container form-group">
@@ -145,7 +145,7 @@ export const CheckCode = () => {
               className="btn"
               type="submit"
               disabled={send}
-              style={{ background: send ? '#49c1a388' : '#49c1a2' }}
+              style={{ background: send ? '#4b4848' : '#000000' }}
             >
               Verify Code
             </button>
@@ -155,7 +155,7 @@ export const CheckCode = () => {
               id="btnResend"
               className="btn"
               disabled={send}
-              style={{ background: send ? '#49c1a388' : '#49c1a2' }}
+              style={{ background: send ? '#4b4848' : '#000000' }}
               onClick={() => handleReSend()}
             >
               Resend Code
@@ -170,6 +170,6 @@ export const CheckCode = () => {
           </p>
         </form>
       </div>
-    </>
+    </div>
   );
 };
