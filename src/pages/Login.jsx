@@ -75,7 +75,7 @@ export const Login = () => {
               className="btn"
               type="submit"
               disabled={send}
-              style={{ background: send ? '#666' : '#333' }}
+              style={{ background: send ? '#4b4848' : '#000000'  }}
             >
               LOGIN
             </button>
