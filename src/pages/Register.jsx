@@ -80,7 +80,7 @@ export const Register = () => {
               {...register('name', { required: true })}
             />
             <label htmlFor="custom-input" className="custom-placeholder">
-              username
+              Username
             </label>
           </div>
           <div className="password_container">
@@ -93,7 +93,7 @@ export const Register = () => {
               {...register('password', { required: true })}
             />
             <label htmlFor="custom-input" className="custom-placeholder">
-              password
+              Password
             </label>
           </div>
           <div className="email_container">
@@ -106,7 +106,7 @@ export const Register = () => {
               {...register('email', { required: true })}
             />
             <label htmlFor="custom-input" className="custom-placeholder">
-              email
+              Email
             </label>
           </div>
           {rol == "comercio" && <div className="cif_container">
