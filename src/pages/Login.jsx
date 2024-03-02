@@ -33,8 +33,8 @@ export const Login = () => {
   }, []);
 
   if (loginOk) {
-    if (res.data?.user?.check == false) {
-      return <Navigate to="/verifyCode" />;
+    if (res.data?.user?.confirmationCodeChecked == false) {
+      return <Navigate to="/checkCode" />;
     } else {
       return <Navigate to="/dashboard" />;
     }
@@ -92,16 +92,14 @@ export const Login = () => {
               </small>
             </p>
           </div>
-
-          
         </form>
       </div>
-        <div className="footerForm">
-            <p className="parrafoLogin">Are you not registered?</p>
-            <p className="parrafoLogin">
-              <Link to="/register">Register Here</Link>
-            </p>
-          </div>
+      <div className="footerForm">
+        <p className="parrafoLogin">Are you not registered?</p>
+        <p className="parrafoLogin">
+          <Link to="/register">Register Here</Link>
+        </p>
+      </div>
     </div>
   );
 };
