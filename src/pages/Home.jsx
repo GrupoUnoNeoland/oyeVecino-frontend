@@ -88,13 +88,14 @@ export const Home = () => {
                 </p>
               </div>
             </figure>
-            
+
             <figure className="third-section__card">
               <div className="third-section__card-image third-section__card-image--fifth"></div>
               <div className="third-section__card-text">
                 <h3>Puntos para Cambio</h3>
                 <p>
-                  Puntos generados a partir de la valoración de los servicios prestados para que puedan ser cambiados por descuentos en el comércio local.
+                  Puntos generados a partir de la valoración de los servicios prestados
+                  para que puedan ser cambiados por descuentos en el comércio local.
                 </p>
               </div>
             </figure>
@@ -104,12 +105,17 @@ export const Home = () => {
           <h2>
             Beneficios de <span>OYE VECINO</span>
           </h2>
-          <p>"OYE VECINO" es más que una red social; es la llave para construir un barrio vibrante y solidario.</p>
-          <p>Únete a nosotros y descubre las innumerables formas en que tu participación puede marcar la diferencia en el lugar que llamas hogar. </p>          
+          <p>
+            "OYE VECINO" es más que una red social; es la llave para construir un barrio
+            vibrante y solidario.
+          </p>
+          <p>
+            Únete a nosotros y descubre las innumerables formas en que tu participación
+            puede marcar la diferencia en el lugar que llamas hogar.{' '}
+          </p>
           <p>¡Conéctate, comparte y fortalece tu vecindario hoy!</p>
           <div className="fourth-section__cards-container">
-            
-          {/* <div className="fourth-section__card">
+            {/* <div className="fourth-section__card">
             <p className="card__title">Fortalecimiento de la Comunidad</p>
             <div className="card__line"></div>
             <p className="card__text">Estimula una comunidad más cohesionada, donde la colaboración y la amistad florecen.</p>
