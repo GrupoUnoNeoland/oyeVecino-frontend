@@ -2,7 +2,7 @@ import './Uploadfile.css';
 
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-export const Uploadfile = ({ registerForm }) => {
+export const Uploadfile = ({ registerForm, type }) => {
   const { register, handleSubmit } = useForm();
   const ekUpload = () => {
     const Init = () => {
@@ -43,7 +43,7 @@ export const Uploadfile = ({ registerForm }) => {
       output('<strong>' + encodeURI(file.name) + '</strong>');
       let imageName = file.name;
 
-      let isGood = /\.(?=gif|jpg|png|jpeg)/gi.test(imageName);
+      let isGood = /\.(?=gif|jpg|png|jpeg|pdf)/gi.test(imageName);
       if (isGood) {
         document.getElementById('start').classList.add('hidden');
         document.getElementById('response').classList.remove('hidden');
@@ -76,19 +76,19 @@ export const Uploadfile = ({ registerForm }) => {
         id="file-upload"
         type="file"
         name="image"
-        accept="image/*"
+        accept="image/*,.pdf"
         {...registerForm}
       />
 
       <label htmlFor="file-upload" id="file-drag">
         <img id="file-image" src="#" alt="Preview" className="hidden" />
         <div id="start">
-          <i className="fa fa-download" aria-hidden="true"></i>
-          <div className="divSelect">Select a file or drag here</div>
+          <i className={type == "image" ? "fa fa-image": "fa fa-download"} aria-hidden="true"></i>
+          <div className="divSelect">Select a {type} or drag here</div>
           <div id="notimage" className="hidden">
-            Please select an image
+            Please select an file
           </div>
-          <span id="file-upload-btn" className="btn btn-primary">
+          <span id="file-upload-btn" className="hidden btn btn-primary">
             Select a file
           </span>
         </div>
