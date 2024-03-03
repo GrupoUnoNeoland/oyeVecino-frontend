@@ -3,8 +3,9 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import App from '../App';
 import { Protected } from '../components/ProtectedRoute/Protected';
-import { Dashboard } from '../pages/Dashboard';
-import { CheckCode, ForgotPassword, Home, Login, Register } from '../pages/index';
+import { CheckCode, ForgotPassword, Home, Login, Register, Dashboard, Request, Profile } from '../pages/index';
+import { ProtectedRequestChildren } from '../components/ProtectedRoute/ProtectedRequestChildren';
+import { ProtectedCheckChildren } from '../components/ProtectedRoute/ProtectedCheckChildren';
 
 export const router = createBrowserRouter([
   {
@@ -25,18 +26,37 @@ export const router = createBrowserRouter([
       },
       {
         path: '/checkCode',
-        element: <CheckCode />,
+        element:(
+          <ProtectedCheckChildren>
+            <CheckCode />
+          </ProtectedCheckChildren>
+        ),
       },
       {
         path: '/forgotpassword',
         element: <ForgotPassword />,
       },
-
+      {
+        path: '/request',
+        element:(
+          <ProtectedRequestChildren>
+            <Request />
+          </ProtectedRequestChildren>
+        ),
+      },
       {
         path: '/dashboard',
         element: (
           <Protected>
             <Dashboard />
+          </Protected>
+        )
+      },
+        {
+        path: '/profile',
+        element: (
+          <Protected>
+            <Profile />
           </Protected>
         ),
       },
