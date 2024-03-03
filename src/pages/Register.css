@@ -39,7 +39,12 @@
 
     h1 {
       text-decoration: underline;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      border-bottom: 2px solid var(--mutard-bg-color);
+      margin-bottom: 10px;
     }
 
     & form {

@@ -67,6 +67,7 @@ export const Register = () => {
     <div id="register-container">
       <div className="form-wrap">
         <h1>Sign Up</h1>
+        <h3>Paso 1 de 2</h3>
         <p>It’s free and only takes a minute.</p>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="roles_options"><p className={rol == "vecino" ? "clicked" : ""} onClick={()=>handleRoleClick("vecino")}>Vecino</p><p  className={rol == "comercio" ? "clicked" : ""} onClick={()=>handleRoleClick("comercio")}>Comercio</p></div>
@@ -166,7 +167,7 @@ export const Register = () => {
               Teléfono
             </label>
           </div>
-          <Uploadfile />
+          <Uploadfile registerForm={register} type="image"/>
 
           <div className="btn_container">
             <button
