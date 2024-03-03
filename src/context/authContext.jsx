@@ -1,6 +1,4 @@
-import { all } from 'axios';
 import React, { createContext, useContext, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -37,6 +35,12 @@ export const AuthContextProvider = ({ children }) => {
       default:
         break;
     }
+  };  
+
+  const userRequest = (data) => {
+    localStorage.setItem('user', data);
+    const parseUser = JSON.parse(data);
+    setUser(parseUser);
   };
 
   const login = (data) => {
@@ -61,6 +65,7 @@ export const AuthContextProvider = ({ children }) => {
       bridgeData,
       deleteUser,
       setDeleteUser,
+      userRequest
     }),
     [user, allUser, deleteUser],
   );
