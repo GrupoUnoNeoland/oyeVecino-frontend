@@ -103,7 +103,12 @@ export const CheckCode = () => {
     if (!localStorage.getItem('user')) {
       useAutoLogin(allUser, login);
     } else {
-      return <Navigate to="/dashboard" />;
+      const user = localStorage.getItem('user')
+      if (!user?.request) {
+        return <Navigate to="/request" />;
+      } else if(res.data?.user?.request.length == 1) {
+        return <Navigate to="/dashboard" />;
+      }
     }
   }
 
