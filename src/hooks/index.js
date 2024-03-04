@@ -4,3 +4,4 @@ export * from './useRegisterError';
 export * from './useCheckCodeError';
 export * from './useResendCodeError';
 export * from './useForgotPasswordError';
+export * from './useChangePasswordError';
