@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+
 import './Profile.css';
+import { Navigate, Outlet } from 'react-router-dom';
 
 export const Profile = () => {
   return (
     <div id="profile-container">
-    <h1>PROFILE</h1>
-  </div>
-  )
-}
+      <Outlet />
+    </div>
+  );
+};
