@@ -3,7 +3,17 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import App from '../App';
 import { Protected } from '../components/ProtectedRoute/Protected';
-import { CheckCode, ForgotPassword, Home, Login, Register, Dashboard, Request, Profile } from '../pages/index';
+import {
+  CheckCode,
+  ForgotPassword,
+  Home,
+  Login,
+  Register,
+  Dashboard,
+  Request,
+  Profile,
+  ChangePassword,
+} from '../pages/index';
 import { ProtectedRequestChildren } from '../components/ProtectedRoute/ProtectedRequestChildren';
 import { ProtectedCheckChildren } from '../components/ProtectedRoute/ProtectedCheckChildren';
 
@@ -26,7 +36,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/checkCode',
-        element:(
+        element: (
           <ProtectedCheckChildren>
             <CheckCode />
           </ProtectedCheckChildren>
@@ -38,7 +48,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/request',
-        element:(
+        element: (
           <ProtectedRequestChildren>
             <Request />
           </ProtectedRequestChildren>
@@ -50,15 +60,29 @@ export const router = createBrowserRouter([
           <Protected>
             <Dashboard />
           </Protected>
-        )
+        ),
       },
-        {
+      {
         path: '/profile',
         element: (
           <Protected>
             <Profile />
           </Protected>
         ),
+        children: [
+          {
+            path: '/profile/changePassword',
+            element: (
+              <Protected>
+                <ChangePassword />
+              </Protected>
+            ),
+          },
+          {
+            path: '/profile/',
+            element: <Protected>{/* <FormProfile /> */}</Protected>,
+          },
+        ],
       },
     ],
   },
