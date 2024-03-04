@@ -6,3 +6,4 @@ export * from './ForgotPassword';
 export * from './Profile';
 export * from './Request';
 export * from './Dashboard';
+export * from './ChangePassword';
