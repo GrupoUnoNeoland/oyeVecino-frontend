@@ -75,7 +75,7 @@ export const Login = () => {
               className="btn"
               type="submit"
               disabled={send}
-              style={{ background: send ? '#4b4848' : '#000000'  }}
+              style={{ background: send ? '#4b4848' : '#000000' }}
             >
               LOGIN
             </button>
@@ -100,6 +100,11 @@ export const Login = () => {
           <Link to="/register">Register Here</Link>
         </p>
       </div>
+      <img
+        className="imageLogin"
+        src="https://res.cloudinary.com/dqiveomlb/image/upload/v1709593056/APP/paul-rysz-bLF3vK_X2Vc-unsplash_ty9yzv.jpg"
+        alt="vecindario"
+      />
     </div>
   );
 };
