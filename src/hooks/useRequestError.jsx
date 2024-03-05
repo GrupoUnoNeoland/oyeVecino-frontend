@@ -1,13 +1,8 @@
-import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 import React from 'react';
-export const useRequestError = (
-  res,
-  setRes,
-  setOkRequest,
-  userRequest,
-) => {
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+export const useRequestError = (res, setRes, setOkRequest, userRequest) => {
   console.log('>>res', res);
- 
+
   if (res?.response?.status == 500) {
     Swal.fire({
       icon: 'error',
@@ -17,7 +12,7 @@ export const useRequestError = (
       timer: 1500,
     });
     setRes(() => ({}));
-    setOkRequest(false)
+    setOkRequest(false);
   }
 
   if (res?.status == 200) {
@@ -42,7 +37,7 @@ export const useRequestError = (
     });
   }
 
-  if (res?.message == "Network Error") {
+  if (res?.message == 'Network Error') {
     setRes(() => ({}));
     setOkRequest(false);
     Swal.fire({
@@ -67,7 +62,7 @@ export const useRequestError = (
   }
 
   if (res?.response?.status == 409) {
-    setOkRequest(true)
+    setOkRequest(true);
     setRes(() => ({}));
     Swal.fire({
       icon: 'error',

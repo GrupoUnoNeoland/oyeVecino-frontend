@@ -7,9 +7,9 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { Uploadfile } from '../components/index';
 import { useAuth } from '../context/authContext';
 import { useRegisterError } from '../hooks';
-import { registerUser } from '../services/user.service';
-import { createRequest } from '../services/request.service';
 import { useRequestError } from '../hooks/useRequestError';
+import { createRequest } from '../services/request.service';
+import { registerUser } from '../services/user.service';
 
 export const Request = () => {
   const { allUser, setAllUser, bridgeData, setDeleteUser, userRequest } = useAuth();
@@ -20,24 +20,23 @@ export const Request = () => {
 
   const formSubmit = async () => {
     const inputFile = document.getElementById('file-upload').files;
-    const formData = {document: inputFile[0]}
+    const formData = { document: inputFile[0] };
     // console.log('formData', formData, {"document": inputFile[0]});
     if (inputFile.length != 0) {
-      console.log("aqui")
+      console.log('aqui');
       setSend(true);
-      setRes(await createRequest(formData))
+      setRes(await createRequest(formData));
       setSend(false);
-      } else {
-        setSend(true);
-        setRes(await createRequest(formData));
-        setSend(false);
-      }
+    } else {
+      setSend(true);
+      setRes(await createRequest(formData));
+      setSend(false);
+    }
   };
-
 
   useEffect(() => {
     console.log(res);
-    useRequestError(res, setRes, setOkRequest, userRequest,);
+    useRequestError(res, setRes, setOkRequest, userRequest);
     // if (res?.status == 200) bridgeData('ALLUSER');
   }, [res]);
 
@@ -50,9 +49,9 @@ export const Request = () => {
   // }, []);
 
   if (okRequest) {
-    console.log("okRequest", okRequest)
+    console.log('okRequest', okRequest);
     return <Navigate to="/dashboard" />;
-  } 
+  }
 
   return (
     <div id="request-container">
@@ -60,8 +59,8 @@ export const Request = () => {
         <h1>Sign Up</h1>
         <h3>Paso 2 de 2</h3>
         <p>It’s the last step.</p>
-        <form onSubmit={handleSubmit(formSubmit)}>       
-          <Uploadfile registerForm={register} type="file"/>
+        <form onSubmit={handleSubmit(formSubmit)}>
+          <Uploadfile registerForm={register} type="file" />
           <div className="btn_container">
             <button
               className="btn"

@@ -83,7 +83,10 @@ export const Uploadfile = ({ registerForm, type }) => {
       <label htmlFor="file-upload" id="file-drag">
         <img id="file-image" src="#" alt="Preview" className="hidden" />
         <div id="start">
-          <i className={type == "image" ? "fa fa-image": "fa fa-download"} aria-hidden="true"></i>
+          <i
+            className={type == 'image' ? 'fa fa-image' : 'fa fa-download'}
+            aria-hidden="true"
+          ></i>
           <div className="divSelect">Select a {type} or drag here</div>
           <div id="notimage" className="hidden">
             Please select an file

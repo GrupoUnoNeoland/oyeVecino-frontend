@@ -1,4 +1,5 @@
 import './CheckCode.css';
+
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -103,10 +104,10 @@ export const CheckCode = () => {
     if (!localStorage.getItem('user')) {
       useAutoLogin(allUser, login);
     } else {
-      const user = localStorage.getItem('user')
+      const user = localStorage.getItem('user');
       if (!user?.request) {
         return <Navigate to="/request" />;
-      } else if(res.data?.user?.request.length == 1) {
+      } else if (res.data?.user?.request.length == 1) {
         return <Navigate to="/dashboard" />;
       }
     }

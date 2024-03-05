@@ -35,7 +35,7 @@ export const AuthContextProvider = ({ children }) => {
       default:
         break;
     }
-  };  
+  };
 
   const userRequest = (data) => {
     localStorage.setItem('user', data);
@@ -65,7 +65,7 @@ export const AuthContextProvider = ({ children }) => {
       bridgeData,
       deleteUser,
       setDeleteUser,
-      userRequest
+      userRequest,
     }),
     [user, allUser, deleteUser],
   );

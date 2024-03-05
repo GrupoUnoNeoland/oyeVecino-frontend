@@ -1,10 +1,12 @@
-import React from 'react';
 import './ForgotPassword.css';
+
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Navigate } from 'react-router-dom';
-import { forgotPassword } from '../services/user.service';
+
 import { useForgotPasswordError } from '../hooks';
+import { forgotPassword } from '../services/user.service';
 
 export const ForgotPassword = () => {
   const { handleSubmit, register } = useForm();

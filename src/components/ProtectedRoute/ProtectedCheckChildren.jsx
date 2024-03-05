@@ -1,5 +1,6 @@
-import { Navigate } from 'react-router-dom';
 import React from 'react';
+import { Navigate } from 'react-router-dom';
+
 import { useAuth } from '../../context/authContext';
 
 export const ProtectedCheckChildren = ({ children }) => {
