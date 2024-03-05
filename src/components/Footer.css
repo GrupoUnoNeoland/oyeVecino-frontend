@@ -1,4 +1,7 @@
 #footer-container {
+}
+
+footer {
   background-color: var(--black-bg-color);
   min-height: 150px;
   width: 100vw;
@@ -6,4 +9,60 @@
   justify-content: center;
   align-items: center;
   color: #fff;
+}
+
+.fourth-section {
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+  width: 100vw;
+  height: 760px;
+  background-image: url(https://res.cloudinary.com/dqiveomlb/image/upload/v1709290908/oyeVecino/edificios_ymoi92.jpg);
+  background-size: 700px;
+  background-position-y: 25em;
+  background-position-x: 50%;
+  background-repeat: no-repeat;
+  background-color: var(--white-color);
+  text-align: center;
+
+  & h2 {
+    font-size: 38px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 25px;
+    span {
+      color: var(--mutard-bg-color);
+    }
+  }
+
+  & > p {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-family: 'Open sans', sans-serif;
+    font-style: italic;
+    max-width: 670px;
+    align-self: center;
+  }
+}
+
+@media (min-width: 500px) {
+  .fourth-section {
+    height: 600px;
+    background-position-y: 15em;
+  }
+}
+
+@media (min-width: 700px) {
+  .fourth-section {
+    height: 600px;
+    background-size: 1000px;
+    background-position-y: 5em;
+  }
+}
+
+@media (min-width: 1100px) {
+  .fourth-section {
+    background-size: 1300px;
+    background-position-y: -2em;
+  }
 }

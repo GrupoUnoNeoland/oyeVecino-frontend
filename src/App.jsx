@@ -3,7 +3,7 @@ import './App.css';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Header } from './components';
+import { Footer, Header } from './components';
 function App() {
   return (
     <>
@@ -11,6 +11,7 @@ function App() {
       <main>
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 }

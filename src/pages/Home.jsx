@@ -101,7 +101,7 @@ export const Home = () => {
             </figure>
           </div>
         </section>
-        <section className="fourth-section">
+        {/* <section className="fourth-section">
           <h2>
             Beneficios de <span>OYE VECINO</span>
           </h2>
@@ -129,11 +129,11 @@ export const Home = () => {
             <p className="card__title">Seguridad y Vigilancia Colaborativa</p>
             <div className="card__line"></div>
             <p className="card__text">Mantén la seguridad comunitaria a través de alertas y discusiones sobre temas de seguridad locales.</p>
-          </div> */}
+          </div> 
           </div>
-        </section>
+        </section> */}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
