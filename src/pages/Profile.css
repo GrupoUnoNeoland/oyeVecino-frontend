@@ -1,7 +1,6 @@
 #profile-container {
   width: 100vw;
   min-height: 100vh;
-  background-color: var(--mutard-bg-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
