@@ -9,3 +9,4 @@ export * from './Request';
 export * from './Dashboard';
 export * from './ChangePassword';
 export * from './ServiceDemanded';
+export * from './Statement';
