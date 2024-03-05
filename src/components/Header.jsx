@@ -24,12 +24,10 @@ export const Header = () => {
           <div>LOGIN</div>
         </NavLink>
       </nav>}
-      {user !== null ? (
-            <>
-              
-            </>
-          ) : null}
-      {user && <nav className="header-login">      
+      {user && <nav className="header-login">
+      {/* <NavLink to="/dashboard" >
+          <div>DASHBOARD</div>
+        </NavLink> */}
         <NavLink to="/login" >
           <div>LOGOUT</div>
         </NavLink>
