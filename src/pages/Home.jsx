@@ -133,7 +133,7 @@ export const Home = () => {
           </div>
         </section> */}
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
