@@ -44,10 +44,10 @@ export const Login = () => {
       <div className="vecinos">
         <img
           className="imageLogin"
-          src="https://res.cloudinary.com/dqiveomlb/image/upload/v1709593056/APP/paul-rysz-bLF3vK_X2Vc-unsplash_ty9yzv.jpg"
+          src="https://res.cloudinary.com/dqiveomlb/image/upload/v1709666771/APP/composition-login_vqlaqf.png"
           alt="vecindario"
         />
-        <div className="mostard-square"></div>
+        {/* <div className="mostard-square"></div> */}
       </div>
       <div className="form-container">
       <div className="form-wrap">
