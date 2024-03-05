@@ -41,6 +41,15 @@ export const Login = () => {
   }
   return (
     <div id="login-container">
+      <div className="vecinos">
+        <img
+          className="imageLogin"
+          src="https://res.cloudinary.com/dqiveomlb/image/upload/v1709593056/APP/paul-rysz-bLF3vK_X2Vc-unsplash_ty9yzv.jpg"
+          alt="vecindario"
+        />
+        <div className="mostard-square"></div>
+      </div>
+      <div className="form-container">
       <div className="form-wrap">
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
@@ -93,18 +102,15 @@ export const Login = () => {
             </p>
           </div>
         </form>
-      </div>
-      <div className="footerForm">
+        <div className="footerForm">
         <p className="parrafoLogin">Are you not registered?</p>
         <p className="parrafoLogin">
           <Link to="/register">Register Here</Link>
         </p>
       </div>
-      <img
-        className="imageLogin"
-        src="https://res.cloudinary.com/dqiveomlb/image/upload/v1709593056/APP/paul-rysz-bLF3vK_X2Vc-unsplash_ty9yzv.jpg"
-        alt="vecindario"
-      />
+      </div>
+      </div>
+      
     </div>
   );
 };
