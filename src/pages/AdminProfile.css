@@ -1,0 +1,37 @@
+.request_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aqua;
+  width: 70%;
+  padding: 10px 20px;
+}
+
+/* .request {
+  display: flex;
+} */
+
+.request__user-photo {
+  width: 100px;
+  height: 100px;
+  padding: 3px;
+  object-fit: cover;
+  background-color: var(--mutard-bg-color);
+  border-radius: 50%;
+}
+
+.request-btns > button {
+  font-weight: 500;
+}
+
+.request__city-neighborhood-buttons,
+ .request-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.select-label {
+ margin-right: 10px;
+ font-weight: 500;
+}

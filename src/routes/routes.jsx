@@ -16,6 +16,7 @@ import {
 } from '../pages/index';
 import { ProtectedRequestChildren } from '../components/ProtectedRoute/ProtectedRequestChildren';
 import { ProtectedCheckChildren } from '../components/ProtectedRoute/ProtectedCheckChildren';
+import { AdminProfile } from '../pages/AdminProfile';
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
           {
             path: '/profile/',
             element: <Protected>{/* <FormProfile /> */}</Protected>,
+          },
+          {
+            path: '/profile/admin',
+            element: <AdminProfile/>
           },
         ],
       },
