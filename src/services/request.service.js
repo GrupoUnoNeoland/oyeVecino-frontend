@@ -10,6 +10,13 @@ export const createRequest = async (formData) => {
     .catch((error) => error);
 };
 
+export const updateRequest = async (formData, requestId) => {
+  const APIRequest = extraConfig();
+  return APIRequest.patch(`requests/update/${requestId}`, formData)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
 // ------------- delete request
 export const deleteRequest = async (requestId) => {
   const APIRequest = extraConfig();
@@ -40,7 +47,7 @@ export const toggleNeighborhoodInRequest = async (requestId, formData) => {
 
 export const toggleCityInRequest = async (requestId, formData) => {
   const APIRequest = extraConfig();
-  return APIRequest.patch(`cities/add/city/${requestId}`, formData)
+  return APIRequest.patch(`requests/add/city/${requestId}`, formData)
     .then((res) => res)
     .catch((error) => error);
 };

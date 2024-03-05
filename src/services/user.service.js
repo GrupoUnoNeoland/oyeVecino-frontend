@@ -86,6 +86,14 @@ export const updateUser = async (formData) => {
     .catch((error) => error);
 };
 
+export const updateAdressCheck = async (formData, userId) => {
+  const APIUser = extraConfig();
+
+  return APIUser.patch(`users/update/adresscheck/${userId}`, formData)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
 export const deleteUser = async (formData) => {
   const APIUser = extraConfig();
 
@@ -110,7 +118,7 @@ export const getById = async (userId) => {
     .catch((error) => error);
 };
 
-export const toggleNeighborhood = async (formData, userId) => {
+export const toggleNeighborhoodInUser = async (formData, userId) => {
   const APIUser = extraConfig();
 
   return APIUser.patch(`users/add/neighborhood/${userId}`, formData)
