@@ -34,9 +34,9 @@ export const AdminProfile = () => {
   const [citySelected, setCitySelected] = useState('');
   const [neighborhoods, setNeighborhoods] = useState([]);
   const [neighborhoodSelected, setNeighborhoodSelected] = useState('');
-  // console.log('neighborhoodSelected', neighborhoodSelected);
-  // console.log('citySelected', citySelected);
-  // console.log('requests', requests);
+  console.log('neighborhoodSelected', neighborhoodSelected);
+  console.log('citySelected', citySelected);
+  console.log('requests', requests);
   // console.log(neighborhoods)
 
   const getRequests = async () => {
@@ -44,7 +44,7 @@ export const AdminProfile = () => {
     const allRequests = resRequests.data.dataUpdate;
     const waitingRequests = allRequests.filter((request) => request.state == 'waiting');
     setRequests(waitingRequests);
-    console.log('allRequests', allRequests);
+    // console.log(allRequests)
   };
 
   const getCities = async () => {
