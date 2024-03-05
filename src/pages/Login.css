@@ -137,3 +137,13 @@
     width: 50vw;
   }
 }
+
+@media(min-width: 1230px) {
+  .imageLogin {
+    width: 600px;
+    border-radius: 20px;
+    z-index: 2;
+    position: absolute;
+    top: 27%;
+  }
+}
