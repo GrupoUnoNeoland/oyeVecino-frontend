@@ -51,7 +51,7 @@
   position: relative;
   ;
 }
-h1 {
+#dashboard-container h1 {
   position: absolute;
   top: 50%;
   left: 50%;
