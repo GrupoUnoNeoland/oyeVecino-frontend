@@ -72,28 +72,45 @@
           width: 80%;
           height: 30px;
         }
+
+        & input {
+          border: none;
+          border-bottom: 1px solid black;
+          outline: none;
+        }
+
+        & label {
+          margin-top: 7px;
+        }
       }
 
       & .gender-age-container {
         display: flex;
         justify-content: center;
         gap: 10px;
-        width: 80%;
+        width: 90%;
         margin-bottom: 10px;
+        height: 30px; 
+        margin-top: 20px;
 
         & .age_container,
         & .genders_container {
           display: flex;
-          justify-content: flex-end;
+          justify-content: center;
+          flex: 1;
         }
 
         & .age_container {
           gap: 10px;
+          align-items: flex-end;
         }
 
         & .input_age {
           width: 50%;
           height: 20px;
+          border: none;
+          border-bottom: 1px solid black;
+          outline: none;
         }
       }
 
@@ -120,5 +137,57 @@
     text-align: center;
     font-weight: 500;
     margin-bottom: 20px;
+  }
+}
+
+@media(min-width: 700px) {
+  #register-container {
+    background-image: url(https://res.cloudinary.com/dqiveomlb/image/upload/v1709593058/APP/noah-fetz-xtU5fyY4X6s-unsplash_kk0sjz.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+    & .form-wrap {
+      width: 650px;
+    }
+
+    & form {
+      & .form__midle {
+        display: flex;
+        width: 100%;
+      }
+
+      & .form__left,
+      & .form__right {
+        width: 100%;
+      }
+
+      & .form__left {
+        border-right: 1px solid #e6e5e5;
+      }
+
+      & .gender-age-container {
+        width: 90%;
+        margin-bottom: 19px;
+
+        & .age_container,
+        & .genders_container {
+          flex: 1;
+          height: 30px;
+        }
+        & .genders_container {
+          justify-content: center;
+        }
+
+        & .age_container {
+          align-items: flex-end;
+        }
+
+        & .input_age {
+          height: 30px;
+        }
+      }
+    }
+
   }
 }
