@@ -13,6 +13,7 @@ import {
   Request,
   Profile,
   ChangePassword,
+  ServiceDemanded,
 } from '../pages/index';
 import { ProtectedRequestChildren } from '../components/ProtectedRoute/ProtectedRequestChildren';
 import { ProtectedCheckChildren } from '../components/ProtectedRoute/ProtectedCheckChildren';
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
             <Dashboard />
           </Protected>
         ),
+      },
+      {
+        path: '/serviceDemanded',
+        element: <ServiceDemanded />,
       },
       {
         path: '/profile',
