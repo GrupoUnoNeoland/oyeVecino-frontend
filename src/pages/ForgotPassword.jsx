@@ -31,39 +31,48 @@ export const ForgotPassword = () => {
 
   return (
     <div id="forgotpassword-container">
-      <div className="form-wrap">
-        <h1>Change your password</h1>
+      <div className="form-container">
+        <div className="form-wrap">
+          <h1>Change your password</h1>
 
-        <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="user_container form-group">
-            <input
-              className="input_user"
-              type="text"
-              id="email"
-              name="email"
-              autoComplete="false"
-              {...register('email', { required: true })}
-            />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Email
-            </label>
-          </div>
+          <form onSubmit={handleSubmit(formSubmit)}>
+            <div className="user_container form-group">
+              <input
+                className="input_user"
+                type="text"
+                id="email"
+                name="email"
+                autoComplete="false"
+                {...register('email', { required: true })}
+              />
+              <label htmlFor="custom-input" className="custom-placeholder">
+                Email
+              </label>
+            </div>
 
-          <div className="btn_container">
-            <button
-              className="btn"
-              type="submit"
-              disabled={send}
-              style={{ background: send ? '#4b4848' : '#000000' }}
-            >
-              Change password
-            </button>
-          </div>
+            <div className="btn_container">
+              <button
+                className="btn"
+                type="submit"
+                disabled={send}
+                style={{ background: send ? '#4b4848' : '#000000' }}
+              >
+                Change password
+              </button>
+            </div>
 
-          <p className="bottom-text">
-            <small>Enter your email to send you the new password</small>
-          </p>
-        </form>
+            <p className="bottom-text">
+              <small>Enter your email to send you the new password</small>
+            </p>
+          </form>
+        </div>
+      </div>
+      <div className="vecinos">
+        <img
+          className="imageLogin"
+          src="https://res.cloudinary.com/dqiveomlb/image/upload/v1709666771/APP/composition-login_vqlaqf.png"
+          alt="vecindario"
+        />
       </div>
     </div>
   );
