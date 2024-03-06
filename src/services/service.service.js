@@ -57,16 +57,16 @@ export const toggleCity = async (serviceId, formData) => {
 // ------------- getByIdService
 export const getByIdService = async (serviceId) => {
   const APIService = extraConfig();
-  return APIService.get(`services/${serviceId}`)
+  return APIService.get(`services/getbyid/${serviceId}`)
     .then((res) => res)
     .catch((error) => error);
 };
 
 // ------------- getAllServices
 
-export const getAllServices = async () => {
+export const getAllServices = async (type) => {
   const APIService = extraConfig();
-  return APIService.get(`services/`)
+  return APIService.get(`services/getall/${type}`)
     .then((res) => res)
     .catch((error) => error);
 };

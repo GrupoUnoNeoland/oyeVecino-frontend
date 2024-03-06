@@ -1,10 +1,10 @@
-import { extraConfig } from './serviceApiUser.config';
+import { extraConfig } from './serviceApiOyeVecino.config';
 
 //!-----------------CREATE----------------------------------------
 
-export const createLike = async (formData) => {
+export const createRating = async (formData) => {
   const APIRating = extraConfig();
-  return APIRating.post('/requests/create/', formData)
+  return APIRating.post('/rating/create/', formData)
     .then((res) => res)
     .catch((error) => error);
 };
