@@ -30,6 +30,11 @@
     }
   }
 
+  & .dashboard__content-title {
+    text-align: center;
+    margin-top: 30px;
+  }
+
   & .dashboard__content {
     flex: 1;
     display: flex;
