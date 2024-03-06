@@ -1,7 +1,10 @@
 #register-container {
   width: 100vw;
   min-height: 100vh;
-  background-color: var(--mutard-bg-color);
+  background-image: url(https://res.cloudinary.com/dqiveomlb/image/upload/v1709593058/APP/noah-fetz-xtU5fyY4X6s-unsplash_kk0sjz.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -142,10 +145,10 @@
 
 @media(min-width: 700px) {
   #register-container {
-    background-image: url(https://res.cloudinary.com/dqiveomlb/image/upload/v1709593058/APP/noah-fetz-xtU5fyY4X6s-unsplash_kk0sjz.jpg);
+    /* background-image: url(https://res.cloudinary.com/dqiveomlb/image/upload/v1709593058/APP/noah-fetz-xtU5fyY4X6s-unsplash_kk0sjz.jpg);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
   
     & .form-wrap {
       width: 650px;
