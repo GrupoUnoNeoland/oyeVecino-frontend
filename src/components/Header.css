@@ -15,8 +15,8 @@
   box-shadow: 5px -1px 19px -1px rgba(126, 127, 133, 1);
 }
 
-.nav-fixed {
-  width: 100vw;
+#header-container .nav-fixed {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,56 +45,58 @@ i.fa {
 }
 
 #header-container a {
-    color: black;
-    text-decoration: none;
-  }
+  color: black;
+  text-decoration: none;
+}
 
-  .header-nav__item {
-    font-size: 18px;
-    border-bottom: 2px solid #f6f6f6;
-  }
+.header-nav__item {
+  font-size: 18px;
+  border-bottom: 2px solid #f6f6f6;
+}
 
-  .header-nav__item:hover {
-    cursor: pointer;
-    border-bottom: 2px solid var(--mutard-bg-color);
-  }
+.header-nav__item:hover {
+  cursor: pointer;
+  border-bottom: 2px solid var(--mutard-bg-color);
+}
 
-  .nav-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    opacity: 1;
-    /* transition: display 3s; */
-  }
+.nav-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  opacity: 1;
+}
 
-  .nav-mobile.hidden {
-    height: 0;
-    transition: opacity .2s ease-in;
-    opacity: 0;
-  }
+.nav-mobile.hidden {
+  height: 0;
+  transition: opacity 0.2s ease-in;
+}
 
-  .header-nav__item--mobile {
-    padding: 10px 0;
-    width: 100vw;
-    border-top: 1px solid #e6e5e5;
-    display: flex;
-    justify-content: center;
-  }
+.header-nav__item--mobile {
+  padding: 10px 0;
+  width: 100vw;
+  border-top: 1px solid #e6e5e5;
+  display: flex;
+  justify-content: center;
+}
 
-  .profileCircle {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: solid var(--mutard-bg-color) 2px;
-  }
+.nav-mobile.hidden .header-nav__item--mobile {
+  display: none;
+}
+
+.profileCircle {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: solid var(--mutard-bg-color) 2px;
+}
 
 @media (min-width: 700px) {
   #header-container {
     padding-left: 150px;
     padding-right: 150px;
-  }  
+  }
 
   i.fa {
     display: none;
