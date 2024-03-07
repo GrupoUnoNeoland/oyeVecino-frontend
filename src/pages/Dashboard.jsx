@@ -115,7 +115,7 @@ export const Dashboard = () => {
               <div className="card__body">
                 <h4>{item.title}</h4>
                 <p>{item.description}</p>
-                <Link to={`/service/${item._id}`}>
+                <Link to={`/statement/${item._id}`}>
                   <p className="card__body-detail">Ver más...</p>
                 </Link>
               </div>
@@ -131,7 +131,7 @@ export const Dashboard = () => {
               <div className="card__body">
                 <h4>{item.title}</h4>
                 <p>{item.description}</p>
-                <Link to={`/service/${item._id}`}>
+                <Link to={`/event/${item._id}`}>
                   <p className="card__body-detail">Ver más...</p>
                 </Link>
               </div>
