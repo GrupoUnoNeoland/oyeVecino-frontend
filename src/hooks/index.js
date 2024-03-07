@@ -6,3 +6,4 @@ export * from './useRegisterError';
 export * from './useResendCodeError';
 export * from './useForgotPasswordError';
 export * from './useChangePasswordError';
+export * from './useCreateOfferedServiceError';
