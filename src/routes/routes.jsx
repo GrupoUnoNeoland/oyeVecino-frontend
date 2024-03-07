@@ -14,6 +14,8 @@ import {
   Profile,
   ChangePassword,
   Service,
+  Statement,
+  Event,
 } from '../pages/index';
 import { ProtectedRequestChildren } from '../components/ProtectedRoute/ProtectedRequestChildren';
 import { ProtectedCheckChildren } from '../components/ProtectedRoute/ProtectedCheckChildren';
@@ -67,6 +69,14 @@ export const router = createBrowserRouter([
       {
         path: '/service/:id',
         element: <Service />,
+      },
+      {
+        path: '/statement/:id',
+        element: <Statement />,
+      },
+      {
+        path: '/event/:id',
+        element: <Event />,
       },
       {
         path: '/profile',
