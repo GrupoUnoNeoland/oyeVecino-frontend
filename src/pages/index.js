@@ -11,3 +11,4 @@ export * from './ChangePassword';
 export * from './Service';
 export * from './Statement';
 export * from './Event';
+export * from './CreateOfferedService';
