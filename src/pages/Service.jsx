@@ -54,9 +54,9 @@ export const Service = () => {
         <div className="service_container" key={service._id}>
           <div className="service_user">
             <div className="provider-photo_container">
-              <img src={service.provider[0].image} alt="" />
+              <img src={service.provider[0]?.image} alt="" />
             </div>
-            <p>{service.provider[0].name}</p>
+            <p>{service.provider[0]?.name}</p>
           </div>
           <div className="service_container-body">
             <h2 className="service_title">{service.title}</h2>
