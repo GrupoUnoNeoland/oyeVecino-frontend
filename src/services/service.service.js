@@ -3,7 +3,7 @@ import { extraConfig } from './serviceApiOyeVecino.config';
 // ------------- create service
 export const createService = async (formData) => {
   const APIService = extraConfig();
-  return APIService.post('/service/create', formData, {
+  return APIService.post('/services/create', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)
