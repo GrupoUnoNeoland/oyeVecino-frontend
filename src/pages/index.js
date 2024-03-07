@@ -10,3 +10,4 @@ export * from './Dashboard';
 export * from './ChangePassword';
 export * from './Service';
 export * from './Statement';
+export * from './CreateOfferedService';
