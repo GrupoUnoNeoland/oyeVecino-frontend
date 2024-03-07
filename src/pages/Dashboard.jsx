@@ -62,7 +62,6 @@ export const Dashboard = () => {
     <div id="dashboard-container">
       <section className="dashboard__buttons">
         <button
-          active
           className="servicios-ofrecidos--btn dashboard__button"
           onClick={() => handleClickBtnDashboard('ofredServ')}
         >
