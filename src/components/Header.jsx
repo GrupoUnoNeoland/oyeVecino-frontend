@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 export const Header = () => {
   const { user } = useAuth();
   const [showMenuMob, setShowMenuMob] = useState(false);
-  console.log(showMenuMob);
 
   const handleClickMenu = () => {
     setShowMenuMob(!showMenuMob);
