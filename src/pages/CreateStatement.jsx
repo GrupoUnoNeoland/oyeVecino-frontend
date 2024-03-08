@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import './CreateOfferedService.css';
-import { useForm } from 'react-hook-form';
-import { createService } from '../services/service.service';
-import { Uploadfile } from '../components';
+import React, { useEffect, useState } from 'react';
 
-export const CreateOfferedService = () => {
+import './CreateStatement.css';
+import { useForm } from 'react-hook-form';
+import { Uploadfile } from '../components';
+import { createStatement } from '../services/Statement.service';
+import { Navigate } from 'react-router-dom';
+import { useCreateStatementError } from '../hooks/useCreateStatementError';
+
+export const CreateStatement = () => {
   const { register, handleSubmit } = useForm();
   const [send, setSend] = useState(false);
   const [res, setRes] = useState({});
+  const [okRegister, setOkRegister] = useState(null);
 
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById('file-upload').files;
@@ -15,30 +19,33 @@ export const CreateOfferedService = () => {
       const customBody = {
         ...formData,
         images: inputFile[0],
-        type: 'offered',
       };
-      //! si hay imagen:
       setSend(true);
-      setRes(await createService(customBody));
+      setRes(await createStatement(customBody));
       setSend(false);
     } else {
-      //! si no hay imagen
+      const customBody = {
+        ...formData,
+        images: [''],
+      };
       setSend(true);
-      setRes(await createService(formData));
+      setRes(await createStatement(customBody));
       setSend(false);
     }
   };
 
-  //useEffect(() => { //el useEffect escucha la respuesta de la "res" -> respuesta, si tiene, se lanza (que siempre va a tener)
-  //useCreateOfferedServiceError(res, setOkRegister, setRes);
-  //if (res?.status == 200);
-  //}, [res]);
-  //if (okRegister) {escribir pagina para navegar (AQUI UN NAVIGATE)}
+  useEffect(() => {
+    useCreateStatementError(res, setOkRegister, setRes);
+  }, [res]);
+
+  if (okRegister) {
+    return <Navigate to="/dashboard" />;
+  }
 
   return (
-    <div id="create-service-container">
+    <div id="create-statement-container">
       <div className="form-wrap">
-        <h1>Crear servicio</h1>
+        <h1>Crear comunicado</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="title_container">
             <input
@@ -63,7 +70,7 @@ export const CreateOfferedService = () => {
               {...register('description', { required: true })}
             />
             <label htmlFor="custom-input" className="custom-placeholder">
-              Descripción del servicio
+              Descripción del Comunicado
             </label>
             <Uploadfile registerForm={register} type="image" />
           </div>
