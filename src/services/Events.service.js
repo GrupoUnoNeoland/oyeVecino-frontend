@@ -2,7 +2,7 @@ import { extraConfig } from './serviceApiOyeVecino.config';
 
 //!-----------------CREATE----------------------------------------
 
-export const createEvents = async (formData) => {
+export const createEvent = async (formData) => {
   const APIEvent = extraConfig();
   return APIEvent.post('/events/create', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
