@@ -16,7 +16,9 @@ import {
   Service,
   Statement,
   Event,
-  CreateOfferedService,
+  Createservice,
+  CreateStatement,
+  CreateEvent,
 } from '../pages/index';
 import { ProtectedRequestChildren } from '../components/ProtectedRoute/ProtectedRequestChildren';
 import { ProtectedCheckChildren } from '../components/ProtectedRoute/ProtectedCheckChildren';
@@ -68,8 +70,16 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: '/createOfferedService',
-        element: <CreateOfferedService />,
+        path: '/create/service',
+        element: <Createservice />,
+      },
+      {
+        path: '/create/statement',
+        element: <CreateStatement />,
+      },
+      {
+        path: '/create/event',
+        element: <CreateEvent />,
       },
       {
         path: '/service/:id',

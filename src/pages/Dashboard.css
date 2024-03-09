@@ -11,18 +11,20 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 20px;
-    gap: 10px;
+    gap: 20px;
 
     & .dashboard__button {
+      width: 130px;
       padding: 10px 7px;
       border-radius: 10px;
       border: none;
+      cursor: pointer;
       background-color: var(--mutard-bg-color);
       color: var(--black-bg-color);
       font-weight: 600;
-      -webkit-box-shadow: 9px 11px 17px -11px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 9px 11px 17px -11px rgba(0, 0, 0, 0.75);
-      box-shadow: 9px 11px 17px -11px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: -1px 7px 3px -3px rgba(117, 109, 117, 0.69);
+      -moz-box-shadow: -1px 7px 3px -3px rgba(117, 109, 117, 0.69);
+      box-shadow: -1px 7px 3px -3px rgba(117, 109, 117, 0.69);
     }
 
     & .dashboard__button:hover {

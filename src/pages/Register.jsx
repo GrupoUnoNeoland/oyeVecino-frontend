@@ -137,7 +137,6 @@ export const Register = () => {
                   Dirección
                 </label>
               </div>
-
             </div>
             <div className="form__right">
               {rol == 'comercio' && (
@@ -154,7 +153,7 @@ export const Register = () => {
                     CIF
                   </label>
                 </div>
-              )}          
+              )}
               {rol == 'vecino' && (
                 <div className="gender-age-container">
                   <div className="genders_container">

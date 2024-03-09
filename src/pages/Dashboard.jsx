@@ -62,7 +62,6 @@ export const Dashboard = () => {
     <div id="dashboard-container">
       <section className="dashboard__buttons">
         <button
-          active
           className="servicios-ofrecidos--btn dashboard__button"
           onClick={() => handleClickBtnDashboard('ofredServ')}
         >
@@ -94,7 +93,7 @@ export const Dashboard = () => {
           content?.data?.map((item) => (
             <div key={item._id} className="dashboard__card">
               <div className="card__header">
-                <img src={item.images[0]} alt="image" />
+                <img src={item.images[0]} alt={item.title} referrerPolicy="no-referrer" />
               </div>
               <div className="card__body">
                 <h4>{item.title}</h4>
@@ -110,7 +109,7 @@ export const Dashboard = () => {
           content?.data?.map((item) => (
             <div key={item._id} className="dashboard__card">
               <div className="card__header">
-                <img src={item.images[0]} alt="image" />
+                <img src={item.images[0]} alt={item.title} referrerPolicy="no-referrer" />
               </div>
               <div className="card__body">
                 <h4>{item.title}</h4>
@@ -126,7 +125,7 @@ export const Dashboard = () => {
           content?.data?.map((item) => (
             <div key={item._id} className="dashboard__card">
               <div className="card__header">
-                <img src={item.images[0]} alt="image" />
+                <img src={item.images[0]} alt={item.name} referrerPolicy="no-referrer" />
               </div>
               <div className="card__body">
                 <h4>{item.title}</h4>
