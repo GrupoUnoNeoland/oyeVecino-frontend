@@ -3,7 +3,6 @@ import './Statement.css';
 import { getByIdStatements } from '../services/Statement.service';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
-import { createLike, deleteLike } from '../services/Like.service';
 import { TimeStamps } from '../components/TimeStamps';
 import { useForm } from 'react-hook-form';
 import { createMessage } from '../services/message.service';
