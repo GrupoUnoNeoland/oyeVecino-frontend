@@ -32,6 +32,7 @@ export const getAllEvents = async () => {
 //!-------------------GET BY ID-----------------------------------
 
 export const getByIdEvents = async (eventId) => {
+ 
   const APIEvent = extraConfig();
   return APIEvent.get(`/events/${eventId}`)
     .then((res) => res)
@@ -62,7 +63,7 @@ export const getAllLikeEvents = async () => {
 
 export const toggleCityInEvent = async (cityId, event) => {
   const APIEvent = extraConfig();
-  return APIEvent.patch(`/add/city/${event}`, cityId)
+  return APIEvent.patch(`/events/add/city/${event}`, cityId)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -71,7 +72,7 @@ export const toggleCityInEvent = async (cityId, event) => {
 
 export const toggleNeighborhoodInEvent = async (neighborhoodId, event) => {
   const APIEvent = extraConfig();
-  return APIEvent.patch(`/add/neighborhoods/${event}`, neighborhoodId)
+  return APIEvent.patch(`/events/add/neighborhoods/${event}`, neighborhoodId)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -80,16 +81,17 @@ export const toggleNeighborhoodInEvent = async (neighborhoodId, event) => {
 
 export const toggleSponsorInEvent = async (sponsorId, event) => {
   const APIEvent = extraConfig();
-  return APIEvent.patch(`/add/sponsors/${event}`, sponsorId)
+  return APIEvent.patch(`/events/add/sponsors/${event}`, sponsorId)
     .then((res) => res)
     .catch((error) => error);
 };
 
 //!-------------------TOGGLE LIKE--------------------------------------
 
-export const toggleLikeInEvent = async (likeId, event) => {
+export const toggleLikeInEvent = async (eventId, userId) => {
+  console.log(eventId, userId)
   const APIEvent = extraConfig();
-  return APIEvent.patch(`/add/likes/${event}`, likeId)
+  return APIEvent.patch(`/events/add/likes/${eventId}`, userId)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -98,7 +100,7 @@ export const toggleLikeInEvent = async (likeId, event) => {
 
 export const toggleOrganizerInEvent = async (organizerId, event) => {
   const APIEvent = extraConfig();
-  return APIEvent.patch(`/add/organizers/${event}`, organizerId)
+  return APIEvent.patch(`/events/add/organizers/${event}`, organizerId)
     .then((res) => res)
     .catch((error) => error);
 };
