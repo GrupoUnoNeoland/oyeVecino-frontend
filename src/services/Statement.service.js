@@ -62,7 +62,7 @@ export const getAllLikeStatement = async () => {
 
 export const toggleCityInStatement = async (cityId, statement) => {
   const APIStatement = extraConfig();
-  return APIStatement.patch(`/add/city/${statement}`, cityId)
+  return APIStatement.patch(`/statements/add/city/${statement}`, cityId)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -71,7 +71,7 @@ export const toggleCityInStatement = async (cityId, statement) => {
 
 export const toggleNeighborhoodInStatement = async (neighborhoodId, statement) => {
   const APIStatement = extraConfig();
-  return APIStatement.patch(`/add/neighborhoods/${statement}`, neighborhoodId)
+  return APIStatement.patch(`/statements/add/neighborhoods/${statement}`, neighborhoodId)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -80,7 +80,16 @@ export const toggleNeighborhoodInStatement = async (neighborhoodId, statement) =
 
 export const toggleUserInStatement = async (userId, statement) => {
   const APIStatement = extraConfig();
-  return APIStatement.patch(`/add/${statement}`, userId)
+  return APIStatement.patch(`/statements/add/${statement}`, userId)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
+//!-------------------TOGGLE LIKE--------------------------------------
+
+export const toggleLikeInStatement = async (statementId, userId) => {
+  const APIStatement = extraConfig();
+  return APIStatement.patch(`/statements/add/likes/${statementId}`, userId)
     .then((res) => res)
     .catch((error) => error);
 };
