@@ -19,12 +19,12 @@ export const ChangePassword = () => {
 
     if (newPassword == confirmPassword) {
       Swal.fire({
-        title: 'Are you sure you want to change your password?',
+        title: '¿Estás seguro de querer cambiar la contraseña?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: 'rgb(73, 193, 162)',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'YES',
+        confirmButtonText: 'Confirmar',
       }).then(async (result) => {
         if (result.isConfirmed) {
           setSend(true);
@@ -97,7 +97,7 @@ export const ChangePassword = () => {
               className="btn"
               type="submit"
               disabled={send}
-              style={{ background: send ? '#49c1a388' : '#49c1a2' }}
+              style={{ background: send ? '#4b4848' : '#000000' }}
             >
               CHANGE PASSWORD
             </button>
