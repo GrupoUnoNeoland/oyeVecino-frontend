@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 
 export const Header = () => {
   const { user } = useAuth();
+
   const [showMenuMob, setShowMenuMob] = useState(false);
 
   const handleClickMenu = () => {
@@ -43,7 +44,7 @@ export const Header = () => {
               <NavLink to="/login">
                 <div>LOGOUT</div>
               </NavLink>
-              <NavLink to="/profile">
+              <NavLink to={`/profile/${user._id}`}>
                 <img className="profileCircle" src={user.image} alt={user.user} />
               </NavLink>
             </nav>
