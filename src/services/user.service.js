@@ -94,10 +94,10 @@ export const updateAdressCheck = async (formData, userId) => {
     .catch((error) => error);
 };
 
-export const deleteUser = async (formData) => {
+export const deleteUser = async (userId) => {
   const APIUser = extraConfig();
 
-  return APIUser.delete(`users/`, formData)
+  return APIUser.delete(`users/${userId}`)
     .then((res) => res)
     .catch((error) => error);
 };
