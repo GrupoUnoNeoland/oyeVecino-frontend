@@ -6,19 +6,18 @@ import { Uploadfile } from '../components';
 import { Navigate } from 'react-router-dom';
 import { useCreateServiceError } from '../hooks/useCreateServiceError';
 
-export const Createservice = () => {
+export const Createservice = ({ type }) => {
   const { register, handleSubmit } = useForm();
   const [send, setSend] = useState(false);
   const [res, setRes] = useState({});
   const [okRegister, setOkRegister] = useState(null);
-
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById('file-upload').files;
     if (inputFile.length != 0) {
       const customBody = {
         ...formData,
         images: inputFile[0],
-        type: 'offered',
+        type: type,
       };
       setSend(true);
       setRes(await createService(customBody));
@@ -26,7 +25,7 @@ export const Createservice = () => {
     } else {
       const customBody = {
         ...formData,
-        type: 'offered',
+        type: type,
         images: [''],
       };
       setSend(true);
