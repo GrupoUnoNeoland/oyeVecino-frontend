@@ -3,7 +3,7 @@ import './Statement.css';
 import { getByIdStatements } from '../services/Statement.service';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
-import { createLike, deleteLike } from '../services/Like.service';
+
 import { TimeStamps } from '../components/TimeStamps';
 import { useForm } from 'react-hook-form';
 import { createMessage } from '../services/message.service';
@@ -17,6 +17,7 @@ export const Statement = () => {
   const { register, handleSubmit, reset } = useForm();
   const { user } = useAuth();
   const { id } = useParams();
+
   console.log(user);
 
   const checkUserLike = () => {
@@ -35,21 +36,44 @@ export const Statement = () => {
 
   const getStatement = async (id) => {
     console.log('getStatemnt');
-    setStatement(null);
+
     const resStatement = await getByIdStatements(id);
-    const statementData = resStatement.data;
-    setStatement(statementData);
+
+    if (resStatement.status == 200) {
+      const statementData = resStatement.data;
+      console.log(resStatement);
+      setStatement(statementData);
+    } else {
+      getStatement(id);
+    }
   };
 
-  const handleLikeClick = async () => {
+  const handleLikeClick = async (e) => {
+    e.preventDefault();
     const formDataLike = JSON.stringify({ statementsFav: user._id });
     await toggleLikeInStatement(id, formDataLike);
+
+    if (statement.likes?.find((item) => item._id == user._id)) {
+      setStatement((valor) => {
+        const updateLike = valor?.likes?.filter((item) => item._id != user._id);
+        console.log(updateLike);
+        return { ...valor, likes: updateLike };
+      });
+      getStatement(id);
+    } else {
+      setStatement((valor) => ({ ...valor, likes: [...valor.likes, user] }));
+      getStatement(id);
+    }
     setLike(!like);
   };
 
   useEffect(() => {
     getStatement(id);
   }, [message]);
+
+  // useEffect(() => {
+  //   getStatement(id);
+  // }, [like]);
 
   useEffect(() => {
     checkUserLike();
@@ -67,21 +91,32 @@ export const Statement = () => {
         <div className="statement_container" key={statement._id}>
           <div className="statement_user">
             <div className="owner-photo_container">
-              <img src={statement.owner[0]?.image} alt="" />
+              <img src={statement?.owner[0]?.image} alt="" />
             </div>
-            <p>{statement.owner[0]?.name}</p>
+            <p>{statement?.owner[0]?.name}</p>
           </div>
           <div className="statement_container-body">
-            <h2 className="statement_title">{statement.title}</h2>
+            <h2 className="statement_title">{statement?.title}</h2>
             <div className="statement_description">
-              <p>{statement.description}</p>
+              <p>{statement?.description}</p>
             </div>
             <p className="statement_photos-title">FOTOS</p>
-            {statement.images.map((image, index) => (
+            {statement?.images?.map((image, index) => (
               <div key={index} className="statement-photo_container">
                 <img src={image} alt="image" />
               </div>
             ))}
+            <div className="like_button_container">
+              <button
+                className={like ? 'like-button liked' : 'like-button'}
+                onClick={(e) => handleLikeClick(e)}
+              >
+                <span role="img" aria-label="heart" className="heart-icon">
+                  &#x2665;
+                </span>
+              </button>
+              <p>{statement?.likes?.length}</p>
+            </div>
             <div className="comments_container">
               <h2>Comentario Público</h2>
               <form onSubmit={handleSubmit(formSubmit)}>
@@ -99,16 +134,7 @@ export const Statement = () => {
                 </div>
                 <button type="submit">Comentar</button>
               </form>
-              <div className="like_button_container">
-                <button
-                  className={like ? 'like-button liked' : 'like-button'}
-                  onClick={handleLikeClick}
-                >
-                  <span role="img" aria-label="heart" className="heart-icon">
-                    &#x2665;
-                  </span>
-                </button>
-              </div>
+
               {statement?.comments.map((item, index) => (
                 <div key={index} className="comment_allcoment">
                   <div className="comment_user-photo">

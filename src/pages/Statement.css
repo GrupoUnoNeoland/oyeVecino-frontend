@@ -189,7 +189,7 @@
 }
 
 .like-button:hover .heart-icon {
-  color: #ff0000; /* Cambia el color del corazón al pasar el ratón sobre él */
+  cursor: pointer;
 }
 
 .liked .heart-icon {
