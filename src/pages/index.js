@@ -14,3 +14,7 @@ export * from './Event';
 export * from './CreateService';
 export * from './CreateStatement';
 export * from './CreateEvent';
+export * from './UpdateStatement';
+export * from './UpdateOffService';
+export * from './UpdateDemService';
+export * from './UpdateEvent';
