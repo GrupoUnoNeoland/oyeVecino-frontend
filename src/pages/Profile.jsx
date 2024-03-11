@@ -131,40 +131,6 @@ export const Profile = () => {
           >
             Favoritos
           </button>
-          <button
-            className="eventos--btn profile__button"
-            onClick={() =>
-              handleClickBtnProfile({
-                /**futurible */
-              })
-            }
-          >
-            Cupones
-          </button>
-          <button
-            className="eventos--btn profile__button"
-            onClick={() => handleClickBtnProfile('Crear Serv Off')}
-          >
-            Ofrecer Servicio
-          </button>
-          <button
-            className="eventos--btn profile__button"
-            onClick={() => handleClickBtnProfile('createServDem')}
-          >
-            Demandar Servicio
-          </button>
-          <button
-            className="eventos--btn profile__button"
-            onClick={() => handleClickBtnProfile('createStat')}
-          >
-            Crear Comunicado
-          </button>
-          <button
-            className="eventos--btn profile__button"
-            onClick={() => handleClickBtnProfile('createEvent')}
-          >
-            Crear Evento
-          </button>
         </section>
         <section className="my_content" key={''}>
           {btnClicked == 'Servicios Ofrecidos' &&
