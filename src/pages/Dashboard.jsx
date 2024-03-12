@@ -1,6 +1,6 @@
 import './Dashboard.css';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAllServices } from '../services/service.service';
 import { getAllStatements } from '../services/Statement.service';
 import { getAllEvents } from '../services/Events.service';
@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 export const Dashboard = () => {
   const [content, setContent] = useState(null);
   const [btnClicked, setBtnClicked] = useState(null);
-  console.log(btnClicked);
+  const navigate = useNavigate();
 
   const getAllServ = async (type) => {
     setContent(null);
@@ -57,6 +57,22 @@ export const Dashboard = () => {
     getAllServ('offered');
     setBtnClicked('Servicios Ofrecidos');
   }, []);
+  const handleClickBtnCreate = async (option) => {
+    switch (option) {
+      case 'Servicios Ofrecidos':
+        navigate('/create/service/offered');
+        break;
+      case 'Servicios Demandados':
+        navigate('/create/service/demanded');
+        break;
+      case 'Comunicados':
+        navigate('/create/statement');
+        break;
+      case 'Eventos':
+        navigate('/create/event');
+        break;
+    }
+  };
 
   return (
     <div id="dashboard-container">
@@ -87,6 +103,7 @@ export const Dashboard = () => {
         </button>
       </section>
       <h2 className="dashboard__content-title">{btnClicked}</h2>
+      <button onClick={() => handleClickBtnCreate(btnClicked)}>Crear {btnClicked}</button>
       <section className="dashboard__content">
         {content != null &&
           content.item == 'service' &&

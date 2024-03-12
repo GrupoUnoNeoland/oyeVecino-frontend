@@ -19,10 +19,15 @@ import {
   Createservice,
   CreateStatement,
   CreateEvent,
+  UpdateStatement,
+  UpdateOffService,
+  UpdateEvent,
 } from '../pages/index';
 import { ProtectedRequestChildren } from '../components/ProtectedRoute/ProtectedRequestChildren';
 import { ProtectedCheckChildren } from '../components/ProtectedRoute/ProtectedCheckChildren';
-import { AdminProfile } from '../pages/AdminProfile';
+
+import { UpdateProfile } from '../pages/UpdateProfile';
+import { UpdateDemService } from '../pages/UpdateDemService';
 
 export const router = createBrowserRouter([
   {
@@ -69,18 +74,7 @@ export const router = createBrowserRouter([
           </Protected>
         ),
       },
-      {
-        path: '/create/service',
-        element: <Createservice />,
-      },
-      {
-        path: '/create/statement',
-        element: <CreateStatement />,
-      },
-      {
-        path: '/create/event',
-        element: <CreateEvent />,
-      },
+
       {
         path: '/service/:id',
         element: <Service />,
@@ -95,7 +89,39 @@ export const router = createBrowserRouter([
         element: <Event />,
       },
       {
-        path: '/profile',
+        path: '/create/service/offered',
+        element: <Createservice type="offered" />,
+      },
+      {
+        path: '/create/service/demanded',
+        element: <Createservice type="demanded" />,
+      },
+      {
+        path: '/create/event',
+        element: <CreateEvent />,
+      },
+      {
+        path: '/create/statement',
+        element: <CreateStatement />,
+      },
+      {
+        path: '/update/statement/:id',
+        element: <UpdateStatement />,
+      },
+      {
+        path: '/update/offserv/:id',
+        element: <UpdateOffService />,
+      },
+      {
+        path: '/update/demserv/:id',
+        element: <UpdateDemService />,
+      },
+      {
+        path: '/update/event/:id',
+        element: <UpdateEvent />,
+      },
+      {
+        path: '/profile/:id',
         element: (
           <Protected>
             <Profile />
@@ -103,7 +129,7 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: '/profile/changePassword',
+            path: '/profile/:id/changePassword',
             element: (
               <Protected>
                 <ChangePassword />
@@ -111,13 +137,18 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: '/profile/',
-            element: <Protected>{/* <FormProfile /> */}</Protected>,
+            path: '/profile/:id/update',
+            element: (
+              <Protected>
+                <UpdateProfile />
+              </Protected>
+            ),
           },
-          {
-            path: '/profile/admin',
-            element: <AdminProfile />,
-          },
+
+          //   {
+          //     path: '/profile/admin',
+          //     element: <AdminProfile />,
+          //   },
         ],
       },
     ],

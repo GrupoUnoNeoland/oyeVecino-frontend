@@ -40,9 +40,9 @@ export const getByIdStatements = async (statementId) => {
 
 //!--------------------UPDATE-------------------------------------
 
-export const updateStatements = async (formData) => {
+export const updateStatements = async (formData, statementId) => {
   const APIStatement = extraConfig();
-  return APIStatement.post('/statements/create', formData, {
+  return APIStatement.patch(`/statements/update/statement/${statementId}`, formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
     .then((res) => res)

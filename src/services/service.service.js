@@ -82,7 +82,7 @@ export const getByNameServices = async (title) => {
 
 // ------------- updateServices
 
-export const updateServices = async (serviceId, formData) => {
+export const updateServices = async (formData, serviceId) => {
   const APIService = extraConfig();
   return APIService.patch(`services/update/service/${serviceId}`, formData, {
     headers: { 'Content-Type': 'multipart/form-data' },

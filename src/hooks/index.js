@@ -9,3 +9,5 @@ export * from './useChangePasswordError';
 export * from './useCreateServiceError';
 export * from './useCreateEventError';
 export * from './useCreateStatementError';
+export * from './useDeleteUserError';
+export * from './useUpdateError';

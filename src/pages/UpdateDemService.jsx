@@ -1,51 +1,70 @@
-import React, { useEffect, useState } from 'react';
-import './CreateService.css';
-import { useForm } from 'react-hook-form';
-import { createService } from '../services/service.service';
-import { Uploadfile } from '../components';
-import { Navigate } from 'react-router-dom';
-import { useCreateServiceError } from '../hooks/useCreateServiceError';
+import './UpdateDemService.css';
 
-export const Createservice = ({ type }) => {
-  const { register, handleSubmit } = useForm();
+import React, { useEffect, useState } from 'react';
+
+import { useForm } from 'react-hook-form';
+import { Uploadfile } from '../components';
+
+import { Navigate, useParams } from 'react-router-dom';
+import { getByIdService, updateServices } from '../services/service.service';
+
+export const UpdateDemService = () => {
+  const { id } = useParams();
+  const { register, handleSubmit, setValue } = useForm();
   const [send, setSend] = useState(false);
   const [res, setRes] = useState({});
-  const [okRegister, setOkRegister] = useState(null);
+  //const [okRegister, setOkRegister] = useState(null);
+  const [serviceId, setServiceId] = useState(id);
+
+  const getPrevData = async () => {
+    const allServiceData = await getByIdService(serviceId);
+
+    const serviceData = allServiceData.data;
+    console.log('serviceData', allServiceData);
+
+    setValue('title', serviceData.title);
+    setValue('description', serviceData.description);
+    setValue('images', serviceData.images[0]);
+  };
+
+  useEffect(() => {
+    getPrevData(id);
+  }, [serviceId]);
+
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById('file-upload').files;
     if (inputFile.length != 0) {
       const customBody = {
         ...formData,
         images: inputFile[0],
-        type: type,
       };
       setSend(true);
-      setRes(await createService(customBody));
+
+      setRes(await updateServices(customBody, serviceId));
       setSend(false);
     } else {
       const customBody = {
         ...formData,
-        type: type,
         images: [''],
       };
       setSend(true);
-      setRes(await createService(customBody));
+      setRes(await updateServices(customBody, serviceId));
       setSend(false);
     }
   };
 
-  useEffect(() => {
-    useCreateServiceError(res, setOkRegister, setRes);
-  }, [res]);
+  // useEffect(() => {
+  //   useCreateStatementError(res, setOkRegister, setRes);
+  // }, [res]);
 
-  if (okRegister) {
-    return <Navigate to="/dashboard" />;
-  }
+  // if (okRegister) {
+  //   return <Navigate to="/dashboard" />;
+  // }
 
   return (
-    <div id="create-service-container">
+    <div id="create-statement-container">
       <div className="form-wrap">
-        <h1>Crear servicio</h1>
+        <h1>Editar Servicio Ofrecido</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="title_container">
             <input
@@ -70,7 +89,7 @@ export const Createservice = ({ type }) => {
               {...register('description', { required: true })}
             />
             <label htmlFor="custom-input" className="custom-placeholder">
-              Descripción del servicio
+              Descripción del Comunicado
             </label>
             <Uploadfile registerForm={register} type="image" />
           </div>
@@ -82,7 +101,7 @@ export const Createservice = ({ type }) => {
               disabled={send}
               style={{ background: send ? '#4b4848' : '#000000' }}
             >
-              Crear
+              Actualizar
             </button>
           </div>
         </form>

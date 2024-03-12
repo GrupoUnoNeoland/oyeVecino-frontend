@@ -32,7 +32,6 @@ export const getAllEvents = async () => {
 //!-------------------GET BY ID-----------------------------------
 
 export const getByIdEvents = async (eventId) => {
- 
   const APIEvent = extraConfig();
   return APIEvent.get(`/events/${eventId}`)
     .then((res) => res)
@@ -41,11 +40,9 @@ export const getByIdEvents = async (eventId) => {
 
 //!--------------------UPDATE-------------------------------------
 
-export const updateEvents = async (formData) => {
+export const updateEvents = async (formData, idEvent) => {
   const APIEvent = extraConfig();
-  return APIEvent.post('/events/create', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  })
+  return APIEvent.patch(`/events/update/event/${idEvent}`, formData)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -89,7 +86,6 @@ export const toggleSponsorInEvent = async (sponsorId, event) => {
 //!-------------------TOGGLE LIKE--------------------------------------
 
 export const toggleLikeInEvent = async (eventId, userId) => {
-  console.log(eventId, userId)
   const APIEvent = extraConfig();
   return APIEvent.patch(`/events/add/likes/${eventId}`, userId)
     .then((res) => res)
