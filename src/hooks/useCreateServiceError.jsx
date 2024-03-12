@@ -31,7 +31,7 @@ export const useCreateServiceError = (res, setRegisterOk, setRes) => {
     setRes({});
   }
 
-  //! -------------------- 404: 'error, resend code'
+  //! -------------------- 404: 'error, service not created'
   if (res?.response?.status == 404) {
     Swal.fire({
       icon: 'error',

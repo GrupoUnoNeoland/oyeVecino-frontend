@@ -47,7 +47,7 @@ export const useLoginError = (res, setRes, userLogin, setLoginOk) => {
 
   //!------------------ 404: 'password dont match'
 
-  if (res?.response?.data?.includes('password dont match')) {
+  if (res?.response?.data?.includes("password doesn't match")) {
     setRes(() => ({}));
     Swal.fire({
       icon: 'error',
