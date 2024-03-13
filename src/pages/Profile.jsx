@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import './Profile.css';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { deleteService } from '../services/service.service';
 import { FigureUser } from '../components';
 import { getById } from '../services/user.service';
@@ -49,6 +49,9 @@ export const Profile = () => {
         break;
       case 'event':
         setBtnClicked('Mis Eventos');
+        break;
+      case 'favs':
+        setBtnClicked('Mis Favoritos');
         break;
     }
   };
@@ -126,10 +129,16 @@ export const Profile = () => {
             Mis Eventos
           </button>
           <button
-            className="eventos--btn profile__button"
-            // onClick={() => handleClickBtnProfile('')}
+            className="favoritos--btn profile__button"
+            onClick={() => handleClickBtnProfile('favs')}
           >
             Favoritos
+          </button>
+          <button
+            className="chats--btn profile__button"
+            onClick={() => navigate('/chat')}
+          >
+            Chats
           </button>
         </section>
         <section className="my_content" key={''}>
@@ -163,7 +172,6 @@ export const Profile = () => {
                 </div>
               </div>
             ))}
-
           {btnClicked == 'Servicios Demandados' &&
             users?.servicesDemanded?.map((service) => (
               <div key={service._id} className="dashboard__card">
@@ -194,7 +202,6 @@ export const Profile = () => {
                 </div>
               </div>
             ))}
-
           {btnClicked == 'Mis Comunicados' &&
             users?.statements?.map((statement) => (
               <div key={statement._id} className="dashboard__card">
@@ -225,6 +232,43 @@ export const Profile = () => {
                 </div>
               </div>
             ))}
+          {btnClicked == 'Mis Favoritos' &&
+            users?.eventsFav?.map((event) => (
+              <div key={event._id} className="dashboard__card">
+                <div className="card__header">
+                  <img src={event.images} alt={event.name} referrerPolicy="no-referrer" />
+                </div>
+                <div className="card__body">
+                  <h4>{event.title}</h4>
+
+                  <div className="like-button liked">
+                    <Link to={`/event/${event._id}`}>
+                      <span className="heart-icon">&#x2665;</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          {users?.statementsFav?.map((statement) => (
+            <div key={statement._id} className="dashboard__card">
+              <div className="card__header">
+                <img
+                  src={statement.images[0]}
+                  alt={statement.name}
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="card__body">
+                <h4>{statement.title}</h4>
+
+                <div className="like-button liked">
+                  <Link to={`/statement/${statement._id}`}>
+                    <span className="heart-icon">&#x2665;</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
           {btnClicked == 'Mis Eventos' &&
             users?.events?.map((event) => (
               <div key={event._id} className="dashboard__card">
