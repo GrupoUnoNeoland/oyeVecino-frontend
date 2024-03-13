@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Statement.css';
 import { getByIdStatements } from '../services/Statement.service';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 
 import { TimeStamps } from '../components/TimeStamps';
@@ -13,9 +13,12 @@ export const Statement = () => {
   const [statement, setStatement] = useState(null);
   const [like, setLike] = useState(false);
   const [message, setMessage] = useState(null);
+  const [showInput, setShowInput] = useState(false);
 
   const { register, handleSubmit, reset } = useForm();
+  const { register: registerChat, handleSubmit: handleSubmitChat } = useForm();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   console.log(user);
@@ -65,6 +68,16 @@ export const Statement = () => {
       getStatement(id);
     }
     setLike(!like);
+  };
+  const handleClickChat = () => {
+    setShowInput(true);
+  };
+  const formSubmitChat = async (formData) => {
+    formData.type = 'private';
+    const resMessage = await createMessage(formData, statement?.owner[0]?._id);
+    const chatId = resMessage?.data?.chat?._id;
+
+    navigate(`/chat?id=${statement?.owner[0]?._id}&chatId=${chatId}`);
   };
 
   useEffect(() => {
@@ -118,6 +131,23 @@ export const Statement = () => {
               <p>{statement?.likes?.length}</p>
             </div>
             <div className="comments_container">
+              <button onClick={() => handleClickChat(statement?.owner[0]?._id)}>
+                Chat privado
+              </button>
+              {showInput && (
+                <form onSubmit={handleSubmitChat(formSubmitChat)}>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      name="message"
+                      id="message"
+                      onClick={() => reset()}
+                      {...registerChat('content', { required: true })}
+                    />
+                    <button>Enviar</button>
+                  </div>
+                </form>
+              )}
               <h2>Comentario Público</h2>
               <form onSubmit={handleSubmit(formSubmit)}>
                 <div className="comment_input">
