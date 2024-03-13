@@ -1,6 +1,6 @@
 import './Dashboard.css';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getAllServices } from '../services/service.service';
 import { getAllStatements } from '../services/Statement.service';
 import { getAllEvents } from '../services/Events.service';
@@ -10,6 +10,10 @@ export const Dashboard = () => {
   const [content, setContent] = useState(null);
   const [btnClicked, setBtnClicked] = useState(null);
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const dashboardType = queryParams.get('type');
 
   const getAllServ = async (type) => {
     setContent(null);
@@ -73,6 +77,12 @@ export const Dashboard = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    if (dashboardType) {
+      handleClickBtnDashboard(dashboardType);
+    }
+  }, []);
 
   return (
     <div id="dashboard-container">

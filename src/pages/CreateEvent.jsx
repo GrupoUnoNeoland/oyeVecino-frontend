@@ -40,7 +40,7 @@ export const CreateEvent = () => {
   }, [res]);
 
   if (okRegister) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/dashboard?type=event" />;
   }
 
   return (

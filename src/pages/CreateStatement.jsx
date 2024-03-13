@@ -39,7 +39,7 @@ export const CreateStatement = () => {
   }, [res]);
 
   if (okRegister) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/dashboard?type=statem" />;
   }
 
   return (

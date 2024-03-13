@@ -11,6 +11,7 @@ export const Createservice = ({ type }) => {
   const [send, setSend] = useState(false);
   const [res, setRes] = useState({});
   const [okRegister, setOkRegister] = useState(null);
+
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById('file-upload').files;
     if (inputFile.length != 0) {
@@ -39,7 +40,7 @@ export const Createservice = ({ type }) => {
   }, [res]);
 
   if (okRegister) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/dashboard?type=demanServ" />;
   }
 
   return (
