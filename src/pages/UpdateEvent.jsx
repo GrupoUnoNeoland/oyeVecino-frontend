@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { Uploadfile } from '../components';
-import { createEvent, getByIdEvents } from '../services/Events.service';
+import { createEvent, getByIdEvents, updateEvents } from '../services/Events.service';
 import { useCreateEventError } from '../hooks';
 import { Navigate, useParams } from 'react-router-dom';
 
@@ -40,7 +40,7 @@ export const UpdateEvent = () => {
       };
 
       setSend(true);
-      setRes(await createEvent(customBody, eventId));
+      setRes(await updateEvents(customBody, eventId));
       setSend(false);
     } else {
       const customBody = {
@@ -48,7 +48,7 @@ export const UpdateEvent = () => {
         images: [''],
       };
       setSend(true);
-      setRes(await createEvent(customBody, eventId));
+      setRes(await updateEvents(customBody, eventId));
       setSend(false);
     }
   };
@@ -140,7 +140,7 @@ export const UpdateEvent = () => {
               disabled={send}
               style={{ background: send ? '#4b4848' : '#000000' }}
             >
-              Crear
+              Actualizar
             </button>
           </div>
         </form>
