@@ -32,11 +32,11 @@ export const FigureUser = ({ idRol }) => {
     <>
       <figure className="dataProfile">
         <img src={idRol?.image} alt="user logo" className="imageUser" />
-        <h3 className="user_name">{idRol?.name}</h3>
+        <h3 className="user_name"> Nombre: {idRol?.name}</h3>
         <h4 className="user_points">Valoraciones: {idRol?.points}</h4>
         <h4 className="user_email">Email: {idRol?.email}</h4>
-        <h4 className="user_city">City: {idRol?.city}</h4>
-        <h4 className="user_description">{idRol?.description}</h4>
+        <h4 className="user_city">City: {idRol?.city[0]?.name}</h4>
+        <h4 className="user_description">Descripción: {idRol?.description}</h4>
       </figure>
       <div className="options_container">
         <Link to={`/profile/${id}/changePassword`}>
