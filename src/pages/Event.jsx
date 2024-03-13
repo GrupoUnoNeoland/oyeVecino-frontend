@@ -109,6 +109,13 @@ export const Event = () => {
             <div className="event_description">
               <p>{event?.description}</p>
             </div>
+            <div className="event_adress">
+              <p>{event?.adress}</p>
+            </div>
+            <div className="event_timetable">
+              <p>{event?.timetable}</p>
+            </div>
+
             <p className="event_photos-title">FOTOS</p>
             {event?.images?.map((image, index) => (
               <div key={index} className="event-photo_container">
