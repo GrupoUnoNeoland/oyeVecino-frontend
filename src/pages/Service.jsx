@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Service.css';
 import { getByIdService } from '../services/service.service';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Rating } from 'primereact/rating';
 import { useAuth } from '../context/authContext';
 import { createRating } from '../services/Rating.service';
@@ -13,9 +13,11 @@ export const Service = () => {
   const [service, setService] = useState(null);
   const [rating, setRating] = useState(null);
   const [message, setMessage] = useState(null);
+  const [showInput, setShowInput] = useState(false);
   const { register, handleSubmit, reset } = useForm();
+  const { register: registerChat, handleSubmit: handleSubmitChat } = useForm();
   const { user } = useAuth();
-
+  const navigate = useNavigate();
   const { id } = useParams();
   const formDataRating = JSON.stringify({ serviceId: id, stars: rating });
 
@@ -26,10 +28,22 @@ export const Service = () => {
   };
 
   const getService = async (id) => {
-    setService(null);
+    //setService(null);
     const resService = await getByIdService(id);
     const service = resService.data;
     setService(service);
+  };
+
+  const handleClickChat = () => {
+    setShowInput(true);
+  };
+  const formSubmitChat = async (formData) => {
+    formData.type = 'private';
+
+    const resMessage = await createMessage(formData, service?.provider[0]?._id);
+    const chatId = resMessage?.data?.chat?._id;
+
+    navigate(`/chat?id=${service?.provider[0]?._id}&chatId=${chatId}`);
   };
 
   useEffect(() => {
@@ -70,6 +84,23 @@ export const Service = () => {
               </div>
             ))}
             <div className="comments_container">
+              <button onClick={() => handleClickChat(service?.provider[0]?._id)}>
+                Chat privado
+              </button>
+              {showInput && (
+                <form onSubmit={handleSubmitChat(formSubmitChat)}>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      name="message"
+                      id="message"
+                      onClick={() => reset()}
+                      {...registerChat('content', { required: true })}
+                    />
+                    <button>Enviar</button>
+                  </div>
+                </form>
+              )}
               <h2>Comentário Público</h2>
               <form onSubmit={handleSubmit(formSubmit)}>
                 <div className="comment_input">
