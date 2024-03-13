@@ -64,7 +64,7 @@ export const UpdateDemService = () => {
   return (
     <div id="create-statement-container">
       <div className="form-wrap">
-        <h1>Editar Servicio Ofrecido</h1>
+        <h1>Editar Servicio Demandado</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="title_container">
             <input
