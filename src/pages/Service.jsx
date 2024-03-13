@@ -14,6 +14,7 @@ export const Service = () => {
   const [rating, setRating] = useState(0);
   const [message, setMessage] = useState(null);
   const [showInput, setShowInput] = useState(false);
+  const [comments, setComments] = useState(null);
 
   const { register, handleSubmit, reset } = useForm();
   const { register: registerChat, handleSubmit: handleSubmitChat } = useForm();
@@ -57,6 +58,9 @@ export const Service = () => {
   const handleRating = async () => {
     await createRating(formDataRating);
   };
+  const orderComments = () => {
+    setComments(service?.comments?.reverse());
+  };
 
   useEffect(() => {
     getService(id);
@@ -77,6 +81,7 @@ export const Service = () => {
 
   useEffect(() => {
     checkUserRating();
+    orderComments();
   }, [service]);
 
   return (
@@ -142,17 +147,18 @@ export const Service = () => {
                 </div>
                 <button type="submit">Comentar</button>
               </form>
-              {service?.comments.map((item, index) => (
-                <div key={index} className="comment_allcoment">
-                  <div className="comment_user-photo">
-                    <img src={item?.owner?.image} alt="image-avatar" />
+              {comments &&
+                comments.map((item, index) => (
+                  <div key={index} className="comment_allcoment">
+                    <div className="comment_user-photo">
+                      <img src={item?.owner?.image} alt="image-avatar" />
+                    </div>
+                    <div className="comment_infos">
+                      <div className="comment_text">{item?.content}</div>
+                      <TimeStamps createdAt={item?.createdAt} />
+                    </div>
                   </div>
-                  <div className="comment_infos">
-                    <div className="comment_text">{item?.content}</div>
-                    <TimeStamps createdAt={item?.createdAt} />
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>

@@ -12,6 +12,7 @@ export const Event = () => {
   const [like, setLike] = useState(false);
   const [message, setMessage] = useState(null);
   const [showInput, setShowInput] = useState(false);
+  const [comments, setComments] = useState(null);
   const { register, handleSubmit, reset } = useForm();
   const { register: registerChat, handleSubmit: handleSubmitChat } = useForm();
   const { user } = useAuth();
@@ -74,6 +75,9 @@ export const Event = () => {
 
     navigate(`/chat?id=${event?.organizer[0]?._id}&chatId=${chatId}`);
   };
+  const orderComments = () => {
+    setComments(event?.comments?.reverse());
+  };
 
   useEffect(() => {
     getEvent(id);
@@ -81,6 +85,7 @@ export const Event = () => {
 
   useEffect(() => {
     checkUserLike();
+    orderComments();
   }, [event]);
 
   useEffect(() => {
@@ -154,17 +159,18 @@ export const Event = () => {
                 <button type="submit">Comentar</button>
               </form>
 
-              {event?.comments?.map((item, index) => (
-                <div key={index} className="comment_allcoment">
-                  <div className="comment_user-photo">
-                    <img src={item?.owner?.image} alt="image-avatar" />
+              {comments &&
+                comments.map((item, index) => (
+                  <div key={index} className="comment_allcoment">
+                    <div className="comment_user-photo">
+                      <img src={item?.owner?.image} alt="image-avatar" />
+                    </div>
+                    <div className="comment_infos">
+                      <div className="comment_text">{item?.content}</div>
+                      <TimeStamps createdAt={item?.createdAt} />
+                    </div>
                   </div>
-                  <div className="comment_infos">
-                    <div className="comment_text">{item?.content}</div>
-                    <TimeStamps createdAt={item?.createdAt} />
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
