@@ -133,12 +133,14 @@ export const Service = () => {
                   />
                 </div>
                 <div className="comment_stars">
-                  <Rating
-                    value={rating}
-                    disabled={rating != 0 ? true : false}
-                    onChange={(e) => setRating(e.value)}
-                    cancel={false}
-                  />
+                  {service?.type == 'offered' ? (
+                    <Rating
+                      value={rating}
+                      disabled={rating != 0 ? true : false}
+                      onChange={(e) => setRating(e.value)}
+                      cancel={false}
+                    />
+                  ) : null}
                 </div>
                 <button type="submit">Comentar</button>
               </form>
