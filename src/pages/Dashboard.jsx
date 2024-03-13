@@ -57,10 +57,6 @@ export const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    getAllServ('offered');
-    setBtnClicked('Servicios Ofrecidos');
-  }, []);
   const handleClickBtnCreate = async (option) => {
     switch (option) {
       case 'Servicios Ofrecidos':
@@ -113,7 +109,11 @@ export const Dashboard = () => {
         </button>
       </section>
       <h2 className="dashboard__content-title">{btnClicked}</h2>
-      <button onClick={() => handleClickBtnCreate(btnClicked)}>Crear {btnClicked}</button>
+      {content != null ? (
+        <button onClick={() => handleClickBtnCreate(btnClicked)}>
+          Crear {btnClicked}
+        </button>
+      ) : null}
       <section className="dashboard__content">
         {content != null &&
           content.item == 'service' &&
