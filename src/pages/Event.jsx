@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Event.css';
 import { getByIdEvents, toggleLikeInEvent } from '../services/Events.service';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import { TimeStamps } from '../components/TimeStamps';
 import { useForm } from 'react-hook-form';
@@ -11,10 +11,12 @@ export const Event = () => {
   const [event, setEvent] = useState(null);
   const [like, setLike] = useState(false);
   const [message, setMessage] = useState(null);
+  const [showInput, setShowInput] = useState(false);
   const { register, handleSubmit, reset } = useForm();
+  const { register: registerChat, handleSubmit: handleSubmitChat } = useForm();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const { id } = useParams();
-  console.log(user);
 
   const checkUserLike = () => {
     if (event != null) {
@@ -30,7 +32,7 @@ export const Event = () => {
     setMessage(await createMessage(formData, id));
   };
 
- const getEvent = async (id) => {
+  const getEvent = async (id) => {
     console.log('getEvent');
 
     const resEvent = await getByIdEvents(id);
@@ -48,7 +50,7 @@ export const Event = () => {
     const formDataLike = JSON.stringify({ eventsFav: user._id });
     await toggleLikeInEvent(id, formDataLike);
 
-     if (event.likes?.find((item) => item._id == user._id)) {
+    if (event.likes?.find((item) => item._id == user._id)) {
       setEvent((value) => {
         const updateLike = value?.likes?.filter((item) => item._id != user._id);
         console.log(updateLike);
@@ -61,7 +63,17 @@ export const Event = () => {
     }
     setLike(!like);
   };
-  
+
+  const handleClickChat = () => {
+    setShowInput(true);
+  };
+  const formSubmitChat = async (formData) => {
+    formData.type = 'private';
+    const resMessage = await createMessage(formData, event?.organizer[0]?._id);
+    const chatId = resMessage?.data?.chat?._id;
+
+    navigate(`/chat?id=${event?.organizer[0]?._id}&chatId=${chatId}`);
+  };
 
   useEffect(() => {
     getEvent(id);
@@ -110,11 +122,28 @@ export const Event = () => {
               <p>{event?.likes?.length}</p>
             </div>
             <div className="comments_container">
+              <button onClick={() => handleClickChat(event?.organizer[0]?._id)}>
+                Chat privado
+              </button>
+              {showInput && (
+                <form onSubmit={handleSubmitChat(formSubmitChat)}>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      name="message"
+                      id="message"
+                      onClick={() => reset()}
+                      {...registerChat('content', { required: true })}
+                    />
+                    <button>Enviar</button>
+                  </div>
+                </form>
+              )}
               <h2>Comentario Público</h2>
               <form onSubmit={handleSubmit(formSubmit)}>
                 <div className="comment_input">
                   <div className="comment_avatar">
-                    <img src={user.image} alt="image-user" />
+                    <img src={user?.image} alt="image-user" />
                   </div>
                   <input
                     type="text"
@@ -126,15 +155,15 @@ export const Event = () => {
                 </div>
                 <button type="submit">Comentar</button>
               </form>
-              
-              {event?.comments.map((item, index) => (
+
+              {event?.comments?.map((item, index) => (
                 <div key={index} className="comment_allcoment">
                   <div className="comment_user-photo">
-                    <img src={item.organizer.image} alt="image-avatar" />
+                    <img src={item?.owner?.image} alt="image-avatar" />
                   </div>
                   <div className="comment_infos">
-                    <div className="comment_text">{item.content}</div>
-                    <TimeStamps createdAt={item.createdAt} />
+                    <div className="comment_text">{item?.content}</div>
+                    <TimeStamps createdAt={item?.createdAt} />
                   </div>
                 </div>
               ))}
@@ -143,5 +172,5 @@ export const Event = () => {
         </div>
       ) : null}
     </div>
-    );
+  );
 };
