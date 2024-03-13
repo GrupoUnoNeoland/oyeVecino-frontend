@@ -11,29 +11,37 @@ import { createMessage } from '../services/message.service';
 
 export const Service = () => {
   const [service, setService] = useState(null);
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(0);
   const [message, setMessage] = useState(null);
   const [showInput, setShowInput] = useState(false);
+
   const { register, handleSubmit, reset } = useForm();
   const { register: registerChat, handleSubmit: handleSubmitChat } = useForm();
   const { user } = useAuth();
   const navigate = useNavigate();
   const { id } = useParams();
-  const formDataRating = JSON.stringify({ serviceId: id, stars: rating });
+  const formDataRating = JSON.stringify({ serviceId: id, stars: String(rating) });
 
   const formSubmit = async (formData) => {
     formData.type = 'service';
-    console.log('FORMDATA', formData);
+
     setMessage(await createMessage(formData, id));
   };
 
   const getService = async (id) => {
-    //setService(null);
     const resService = await getByIdService(id);
-    const service = resService.data;
+    const service = resService?.data;
     setService(service);
   };
+  const checkUserRating = () => {
+    if (service != null) {
+      const ratingUser = service?.starReview?.find(
+        (rating) => rating.userServiceTaker[0]._id == user._id,
+      );
 
+      ratingUser ? setRating(ratingUser?.stars) : setRating(0);
+    }
+  };
   const handleClickChat = () => {
     setShowInput(true);
   };
@@ -46,13 +54,18 @@ export const Service = () => {
     navigate(`/chat?id=${service?.provider[0]?._id}&chatId=${chatId}`);
   };
 
+  const handleRating = async () => {
+    await createRating(formDataRating);
+  };
+
   useEffect(() => {
     getService(id);
   }, [message]);
 
   useEffect(() => {
-    if (rating != null) {
-      createRating(formDataRating);
+    if (rating != 0) {
+      handleRating();
+      getByIdService(id);
     }
   }, [rating]);
 
@@ -61,6 +74,10 @@ export const Service = () => {
       reset();
     }
   }, [message]);
+
+  useEffect(() => {
+    checkUserRating();
+  }, [service]);
 
   return (
     <div id="servicepage-container">
@@ -118,7 +135,7 @@ export const Service = () => {
                 <div className="comment_stars">
                   <Rating
                     value={rating}
-                    disabled={rating != null && true}
+                    disabled={rating != 0 ? true : false}
                     onChange={(e) => setRating(e.value)}
                     cancel={false}
                   />
@@ -128,11 +145,11 @@ export const Service = () => {
               {service?.comments.map((item, index) => (
                 <div key={index} className="comment_allcoment">
                   <div className="comment_user-photo">
-                    <img src={item.owner.image} alt="image-avatar" />
+                    <img src={item?.owner?.image} alt="image-avatar" />
                   </div>
                   <div className="comment_infos">
-                    <div className="comment_text">{item.content}</div>
-                    <TimeStamps createdAt={item.createdAt} />
+                    <div className="comment_text">{item?.content}</div>
+                    <TimeStamps createdAt={item?.createdAt} />
                   </div>
                 </div>
               ))}
