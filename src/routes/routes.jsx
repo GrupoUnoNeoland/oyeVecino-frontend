@@ -22,12 +22,14 @@ import {
   UpdateStatement,
   UpdateOffService,
   UpdateEvent,
+  Chat,
 } from '../pages/index';
 import { ProtectedRequestChildren } from '../components/ProtectedRoute/ProtectedRequestChildren';
 import { ProtectedCheckChildren } from '../components/ProtectedRoute/ProtectedCheckChildren';
 
 import { UpdateProfile } from '../pages/UpdateProfile';
 import { UpdateDemService } from '../pages/UpdateDemService';
+import { AdminProfile } from '../pages/AdminProfile';
 
 export const router = createBrowserRouter([
   {
@@ -73,6 +75,10 @@ export const router = createBrowserRouter([
             <Dashboard />
           </Protected>
         ),
+      },
+      {
+        path: '/chat',
+        element: <Chat />,
       },
 
       {
@@ -121,6 +127,10 @@ export const router = createBrowserRouter([
         element: <UpdateEvent />,
       },
       {
+        path: '/admin',
+        element: <AdminProfile />,
+      },
+      {
         path: '/profile/:id',
         element: (
           <Protected>
@@ -144,11 +154,6 @@ export const router = createBrowserRouter([
               </Protected>
             ),
           },
-
-          //   {
-          //     path: '/profile/admin',
-          //     element: <AdminProfile />,
-          //   },
         ],
       },
     ],
