@@ -141,7 +141,6 @@ export const Statement = () => {
                       type="text"
                       name="message"
                       id="message"
-                      onClick={() => reset()}
                       {...registerChat('content', { required: true })}
                     />
                     <button>Enviar</button>
@@ -158,7 +157,6 @@ export const Statement = () => {
                     type="text"
                     name="comment"
                     id="comment"
-                    onClick={() => reset()}
                     {...register('content', { required: true })}
                   />
                 </div>
