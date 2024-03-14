@@ -164,7 +164,7 @@ export const Profile = () => {
                     </span>
                     <span
                       className="material-symbols-outlined"
-                      onClick={() => handleClickUpdateServOff('updateOffServ', service)}
+                      onClick={() => handleClickUpdateServOff(service)}
                     >
                       edit
                     </span>
@@ -207,7 +207,7 @@ export const Profile = () => {
               <div key={statement._id} className="dashboard__card">
                 <div className="card__header">
                   <img
-                    src={statement.images[0]}
+                    src={statement?.images[0]}
                     alt={statement.name}
                     referrerPolicy="no-referrer"
                   />
