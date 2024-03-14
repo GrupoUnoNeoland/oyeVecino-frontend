@@ -14,7 +14,7 @@ export const Profile = () => {
   const [btnClicked, setBtnClicked] = useState(null);
   const [users, setUser] = useState(null);
   const [okDelete, setOkDelete] = useState(null);
-
+  // console.log('events', users?.events[0].images);
   const navigate = useNavigate();
 
   //! PARA CONSEGUIR LOS DATOS
@@ -26,7 +26,7 @@ export const Profile = () => {
     setUser(null);
     const resUser = await getById(id);
     const users = resUser.data;
-    //console.log('Rol', users.rol);
+
     setUser(users);
   };
 
