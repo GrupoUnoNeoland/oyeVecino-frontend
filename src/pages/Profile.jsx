@@ -14,7 +14,7 @@ export const Profile = () => {
   const [btnClicked, setBtnClicked] = useState(null);
   const [users, setUser] = useState(null);
   const [okDelete, setOkDelete] = useState(null);
-  // console.log('events', users?.events[0].images);
+
   const navigate = useNavigate();
 
   //! PARA CONSEGUIR LOS DATOS
@@ -278,7 +278,11 @@ export const Profile = () => {
             users?.events?.map((event) => (
               <div key={event._id} className="dashboard__card">
                 <div className="card__header">
-                  <img src={event.images} alt={event.name} referrerPolicy="no-referrer" />
+                  <img
+                    src={event?.images[0]}
+                    alt={event.name}
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
                 <div className="card__body">
                   <h4>{event.title}</h4>
