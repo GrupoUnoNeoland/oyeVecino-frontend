@@ -47,9 +47,19 @@ export const CreateEvent = () => {
   return (
     <div id="create-event-container">
       <div className="form-wrap">
-        <h1>Crear evento</h1>
+        <div className="form-title-container">
+          <h1>Crear evento</h1>
+          <p>
+            ¿Algun evento digno de recordar en el vecindario? Crea un evento para que tus
+            vecinos no se lo pierdan.
+          </p>
+        </div>
+
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="title_container">
+          <div className="title_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Título
+            </label>
             <input
               className="input_title"
               type="text"
@@ -58,11 +68,11 @@ export const CreateEvent = () => {
               autoComplete="false"
               {...register('title', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Título
-            </label>
           </div>
-          <div className="description_container">
+          <div className="description_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Descripción
+            </label>
             <input
               className="input_description"
               type="text"
@@ -71,48 +81,49 @@ export const CreateEvent = () => {
               autoComplete="false"
               {...register('description', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Descripción del Evento
-              <div className="adress_container">
-                <input
-                  className="input_adress"
-                  type="text"
-                  id="adress"
-                  name="adress"
-                  autoComplete="false"
-                  {...register('adress', { required: true })}
-                />
+
+            <div className="adress_container info_container">
+              <label htmlFor="custom-input" className="custom-placeholder">
+                Dirección
+              </label>
+              <input
+                className="input_adress"
+                type="text"
+                id="adress"
+                name="adress"
+                autoComplete="false"
+                {...register('adress', { required: true })}
+              />
+            </div>
+            <div className="dateTime_event">
+              <div className="date_container info_container">
                 <label htmlFor="custom-input" className="custom-placeholder">
-                  Dirección
+                  Fecha del evento
                 </label>
-              </div>
-              <div className="date_container">
                 <input
                   className="input_date"
-                  type="text"
+                  type="date"
                   id="date"
                   name="date"
                   autoComplete="false"
                   {...register('date', { required: true })}
                 />
-                <label htmlFor="custom-input" className="custom-placeholder">
-                  Fecha del evento
-                </label>
               </div>
-              <div className="timetable_container">
+              <div className="timetable_container info_container">
+                <label htmlFor="custom-input" className="custom-placeholder">
+                  Horario del evento
+                </label>
                 <input
                   className="input_timetable"
-                  type="text"
+                  type="time"
                   id="timetable"
                   name="timetable"
                   autoComplete="false"
                   {...register('timetable', { required: true })}
                 />
-                <label htmlFor="custom-input" className="custom-placeholder">
-                  Horario del evento
-                </label>
               </div>
-            </label>
+            </div>
+
             <Uploadfile registerForm={register} type="image" multipleUpload={true} />
           </div>
 
