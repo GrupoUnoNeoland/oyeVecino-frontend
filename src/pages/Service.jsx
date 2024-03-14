@@ -128,6 +128,7 @@ export const Service = () => {
                   <div className="comment_avatar">
                     <img src={user.image} alt="image-user" />
                   </div>
+
                   <input
                     type="text"
                     name="comment"
@@ -153,8 +154,10 @@ export const Service = () => {
                     <div className="comment_user-photo">
                       <img src={item?.owner?.image} alt="image-avatar" />
                     </div>
+                    <div className="comment-user-name">{item?.owner?.name}</div>
                     <div className="comment_infos">
                       <div className="comment_text">{item?.content}</div>
+
                       <TimeStamps createdAt={item?.createdAt} />
                     </div>
                   </div>
