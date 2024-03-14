@@ -4,7 +4,6 @@ import { deleteUser } from '../services/user.service';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
-import { useDeleteUserError } from '../hooks';
 
 export const FigureUser = ({ idRol }) => {
   const [okDelete, setOkDelete] = useState(false);
@@ -12,21 +11,53 @@ export const FigureUser = ({ idRol }) => {
   const { id } = useParams();
   const { logout } = useAuth();
 
-  useEffect(() => {
-    if (res != null) {
-      useDeleteUserError(res, setOkDelete, setRes);
+  const handleDeleteClick = async () => {
+    const result = await Swal.fire({
+      title: 'Estás seguro de borrar tu perfil?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'rgb(73, 193, 162)',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'YES',
+      cancelButtonText: 'NO',
+    });
+
+    if (result.isConfirmed) {
+      const res = await deleteUser(idRol._id);
+      if (res.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Usuario borrado',
+          text: 'Esperamos verte pronto de nuevo !',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setOkDelete(true);
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'No se pudo borrar el usuario ❎',
+          text: 'Por favor, inténtalo de nuevo más tarde',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } else {
+      Swal.fire({
+        icon: 'info',
+        title: 'Operación cancelada',
+        text: 'Tu perfil no ha sido eliminado !',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
-  }, [res]);
+  };
 
   useEffect(() => {
     if (okDelete) {
       logout();
     }
   }, [okDelete, logout]);
-  const handleDeleteClick = async () => {
-    setOkDelete(false);
-    setRes(await deleteUser(idRol._id));
-  };
 
   return (
     <>
