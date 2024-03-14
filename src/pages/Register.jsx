@@ -66,9 +66,13 @@ export const Register = () => {
   return (
     <div id="register-container">
       <div className="form-wrap">
-        <h1>Sign Up</h1>
+        <div className="form-title-container">
+          <h1>Registro</h1>
+          <p>Es gratis y solo te toma un minuto.</p>
+        </div>
+
         <h3>Paso 1 de 2</h3>
-        <p>It’s free and only takes a minute.</p>
+
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="roles_options">
             <p
@@ -86,77 +90,81 @@ export const Register = () => {
           </div>
           <div className="form__midle">
             <div className="form__left">
-              <div className="user_container">
+              <div className="user_container info_container">
+                <label htmlFor="custom-input" className="custom-placeholder">
+                  Username
+                </label>
                 <input
                   className="input_user"
                   type="text"
                   id="name"
                   name="name"
                   autoComplete="false"
+                  required
                   {...register('name', { required: true })}
                 />
-                <label htmlFor="custom-input" className="custom-placeholder">
-                  Username
-                </label>
               </div>
-              <div className="email_container">
+              <div className="email_container info_container">
+                <label htmlFor="custom-input" className="custom-placeholder">
+                  Email
+                </label>
                 <input
                   className="input_user"
                   type="email"
                   id="email"
                   name="email"
                   autoComplete="false"
+                  required
                   {...register('email', { required: true })}
                 />
-                <label htmlFor="custom-input" className="custom-placeholder">
-                  Email
-                </label>
               </div>
-              <div className="password_container">
+              <div className="password_container info_container">
+                <label htmlFor="custom-input" className="custom-placeholder">
+                  Password
+                </label>
                 <input
                   className="input_user"
                   type="password"
                   id="password"
                   name="password"
                   autoComplete="false"
+                  required
                   {...register('password', { required: true })}
                 />
-                <label htmlFor="custom-input" className="custom-placeholder">
-                  Password
-                </label>
               </div>
-              <div className="adress_container">
+              <div className="adress_container info_container">
+                <label htmlFor="adress" className="label-adress">
+                  Dirección
+                </label>
                 <input
                   className="input_user"
                   type="text"
                   name="adress"
                   id="adress"
+                  required
                   {...register('adress', { required: true })}
                 />
-                <label htmlFor="adress" className="label-adress">
-                  Dirección
-                </label>
               </div>
-            </div>
-            <div className="form__right">
-              {rol == 'comercio' && (
-                <div className="cif_container">
-                  <input
-                    className="input_user"
-                    type="text"
-                    name="cif"
-                    id="cif"
-                    {...register('cif')}
-                    maxLength="9"
-                  />
-                  <label htmlFor="cif" className="label-cif">
-                    CIF
-                  </label>
-                </div>
-              )}
+
+              <div className="telephone_container info_container">
+                <label htmlFor="telephone" className="label-telephone">
+                  Teléfono
+                </label>
+                <input
+                  className="input_user"
+                  type="text"
+                  name="telephone"
+                  id="telephone"
+                  required
+                  {...register('telephone')}
+                />
+              </div>
               {rol == 'vecino' && (
-                <div className="gender-age-container">
+                <div className="gender-age-container ">
                   <div className="genders_container">
+                    <label htmlFor="gender" className="label-gender">
+                      Genero
+                    </label>
                     <select
                       id="genero"
                       name="gender"
@@ -176,36 +184,44 @@ export const Register = () => {
                       type="text"
                       name="age"
                       id="age"
+                      required
                       {...register('age')}
                     />
                   </div>
                 </div>
               )}
-
-              <div className="description_container">
-                <input
-                  className="input_user"
-                  type="text"
-                  name="description"
-                  id="description"
-                  {...register('description')}
-                />
+              {rol == 'comercio' && (
+                <div className="cif_container info_container">
+                  <label htmlFor="cif" className="label-cif">
+                    CIF
+                  </label>
+                  <input
+                    className="input_user"
+                    type="text"
+                    name="cif"
+                    id="cif"
+                    required
+                    {...register('cif')}
+                    maxLength="9"
+                  />
+                </div>
+              )}
+            </div>
+            <div className="form__right">
+              <div className="description_container info_container">
                 <label htmlFor="description" className="label-description">
                   Descripción
                 </label>
-              </div>
-              <div className="telephone_container">
-                <input
-                  className="input_user"
-                  type="text"
-                  name="telephone"
-                  id="telephone"
-                  {...register('telephone')}
+                <textarea
+                  className="input_user_textArea"
+                  name="description"
+                  id="description"
+                  rows="7"
+                  cols="28"
+                  {...register('description')}
                 />
-                <label htmlFor="telephone" className="label-telephone">
-                  Teléfono
-                </label>
               </div>
+
               <Uploadfile registerForm={register} type="image" />
             </div>
           </div>
