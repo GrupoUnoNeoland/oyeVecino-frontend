@@ -11,3 +11,6 @@ export * from './useCreateEventError';
 export * from './useCreateStatementError';
 export * from './useDeleteUserError';
 export * from './useUpdateError';
+export * from './useUpdateEventError';
+export * from './useUpdateStatementError';
+export * from './useUpdateServiceError';
