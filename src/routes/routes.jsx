@@ -78,58 +78,106 @@ export const router = createBrowserRouter([
       },
       {
         path: '/chat',
-        element: <Chat />,
+        element: (
+          <Protected>
+            <Chat />
+          </Protected>
+        ),
       },
 
       {
         path: '/service/:id',
-        element: <Service />,
+        element: (
+          <Protected>
+            <Service />
+          </Protected>
+        ),
       },
 
       {
         path: '/statement/:id',
-        element: <Statement />,
+        element: (
+          <Protected>
+            <Statement />
+          </Protected>
+        ),
       },
       {
         path: '/event/:id',
-        element: <Event />,
+        element: (
+          <Protected>
+            <Event />
+          </Protected>
+        ),
       },
       {
         path: '/create/service/offered',
-        element: <Createservice type="offered" />,
+        element: (
+          <Protected>
+            <Createservice type="offered" />
+          </Protected>
+        ),
       },
       {
         path: '/create/service/demanded',
-        element: <Createservice type="demanded" />,
+        element: (
+          <Protected>
+            <Createservice type="demanded" />
+          </Protected>
+        ),
       },
       {
         path: '/create/event',
-        element: <CreateEvent />,
+        element: (
+          <Protected>
+            <CreateEvent />
+          </Protected>
+        ),
       },
       {
         path: '/create/statement',
-        element: <CreateStatement />,
+        element: (
+          <Protected>
+            <CreateStatement />
+          </Protected>
+        ),
       },
       {
         path: '/update/statement/:id',
-        element: <UpdateStatement />,
+        element: (
+          <Protected>
+            <UpdateStatement />
+          </Protected>
+        ),
       },
       {
         path: '/update/offserv/:id',
-        element: <UpdateOffService />,
+        element: (
+          <Protected>
+            <UpdateOffService />
+          </Protected>
+        ),
       },
       {
         path: '/update/demserv/:id',
-        element: <UpdateDemService />,
+        element: (
+          <Protected>
+            <UpdateDemService />
+          </Protected>
+        ),
       },
       {
         path: '/update/event/:id',
-        element: <UpdateEvent />,
+        element: (
+          <Protected>
+            <UpdateEvent />
+          </Protected>
+        ),
       },
-      {
-        path: '/admin',
-        element: <AdminProfile />,
-      },
+      // {
+      //   path: '/admin',
+      //   element: <AdminProfile />,
+      // },
       {
         path: '/profile/:id',
         element: (
