@@ -33,10 +33,16 @@ export const ForgotPassword = () => {
     <div id="forgotpassword-container">
       <div className="form-container">
         <div className="form-wrap">
-          <h1>Change your password</h1>
+          <div className="form-title-container">
+            <h1>Cambiar la contraseña</h1>
+            <p>
+              Si has olvidado la contraseña, introduce tu email y te enviaremos una nueva
+              para poder acceder.
+            </p>
+          </div>
 
           <form onSubmit={handleSubmit(formSubmit)}>
-            <div className="user_container form-group">
+            <div className="user_container form-group info_container">
               <input
                 className="input_user"
                 type="text"
@@ -66,13 +72,6 @@ export const ForgotPassword = () => {
             </p>
           </form>
         </div>
-      </div>
-      <div className="vecinos">
-        <img
-          className="imageLogin"
-          src="https://res.cloudinary.com/dqiveomlb/image/upload/v1709666771/APP/composition-login_vqlaqf.png"
-          alt="vecindario"
-        />
       </div>
     </div>
   );
