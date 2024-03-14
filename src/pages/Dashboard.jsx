@@ -1,6 +1,6 @@
 import './Dashboard.css';
 import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAllServices } from '../services/service.service';
 import { getAllStatements } from '../services/Statement.service';
 import { getAllEvents } from '../services/Events.service';
@@ -10,10 +10,6 @@ export const Dashboard = () => {
   const [content, setContent] = useState(null);
   const [btnClicked, setBtnClicked] = useState(null);
   const navigate = useNavigate();
-
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const dashboardType = queryParams.get('type');
 
   const getAllServ = async (type) => {
     setContent(null);
@@ -57,6 +53,10 @@ export const Dashboard = () => {
     }
   };
 
+  useEffect(() => {
+    getAllServ('offered');
+    setBtnClicked('Servicios Ofrecidos');
+  }, []);
   const handleClickBtnCreate = async (option) => {
     switch (option) {
       case 'Servicios Ofrecidos':
@@ -73,12 +73,6 @@ export const Dashboard = () => {
         break;
     }
   };
-
-  useEffect(() => {
-    if (dashboardType) {
-      handleClickBtnDashboard(dashboardType);
-    }
-  }, []);
 
   return (
     <div id="dashboard-container">
@@ -108,12 +102,18 @@ export const Dashboard = () => {
           Eventos
         </button>
       </section>
-      <h2 className="dashboard__content-title">{btnClicked}</h2>
-      {content != null ? (
-        <button onClick={() => handleClickBtnCreate(btnClicked)}>
+
+      <div className="container-crear">
+        <h2 className="dashboard__content-title">{btnClicked}</h2>
+
+        <button
+          onClick={() => handleClickBtnCreate(btnClicked)}
+          className="dashboard__button dashboard__button_relative"
+        >
           Crear {btnClicked}
         </button>
-      ) : null}
+      </div>
+
       <section className="dashboard__content">
         {content != null &&
           content.item == 'service' &&
@@ -124,7 +124,10 @@ export const Dashboard = () => {
               </div>
               <div className="card__body">
                 <h4>{item.title}</h4>
-                <p>{item.description}</p>
+                <div className="descripcion">
+                  <p>{item.description}</p>
+                </div>
+
                 <Link to={`/service/${item._id}`}>
                   <p className="card__body-detail">Ver más...</p>
                 </Link>
@@ -140,7 +143,10 @@ export const Dashboard = () => {
               </div>
               <div className="card__body">
                 <h4>{item.title}</h4>
-                <p>{item.description}</p>
+                <div className="descripcion">
+                  <p>{item.description}</p>
+                </div>
+
                 <Link to={`/statement/${item._id}`}>
                   <p className="card__body-detail">Ver más...</p>
                 </Link>
@@ -156,7 +162,9 @@ export const Dashboard = () => {
               </div>
               <div className="card__body">
                 <h4>{item.title}</h4>
-                <p>{item.description}</p>
+                <div className="descripcion">
+                  <p>{item.description}</p>
+                </div>
                 <Link to={`/event/${item._id}`}>
                   <p className="card__body-detail">Ver más...</p>
                 </Link>
