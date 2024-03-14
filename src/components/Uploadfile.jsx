@@ -38,8 +38,8 @@ export const Uploadfile = ({ registerForm, type, multipleUpload = false }) => {
     // Output
     const output = (msg) => {
       // Response
-      let m = document.getElementById('messages');
-      m.innerHTML = msg;
+      //let m = document.getElementById('messages');
+      //m.innerHTML = msg;
     };
 
     function parseFile(file) {
@@ -113,9 +113,7 @@ export const Uploadfile = ({ registerForm, type, multipleUpload = false }) => {
             Select a file
           </span>
         </div>
-        <div id="response" className="hidden">
-          <div id="messages"></div>
-        </div>
+        <div id="response" className="hidden"></div>
       </label>
     </div>
   );

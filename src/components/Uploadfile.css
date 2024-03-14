@@ -1,7 +1,7 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
 
 #file-image {
-  width: 230px;
+  width: 190px;
 }
 
 #file-image.hidden {
@@ -16,6 +16,7 @@
   margin: 0 auto;
   width: 100%;
   max-width: 600px;
+  height: 300px;
 }
 
 .uploader.hover {
@@ -51,12 +52,15 @@ i.fa {
   flex-direction: column;
   gap: 2rem;
   clear: both;
-  width: 80%;
+  width: 100%;
+  height: 320px;
   padding: 0.3rem 0.5rem;
   text-align: center;
   background: #fff;
   border-radius: 7px;
-  border: 3px solid var(--mutard-bg-color);
+  -webkit-box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.46);
+  box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.46);
   transition: all 0.2s ease;
   user-select: none;
   justify-content: center;
@@ -64,7 +68,9 @@ i.fa {
 }
 
 #file-drag:hover {
-  border-color: var(--mutard-bg-color);
+  -webkit-box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.46);
+  box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.46);
 }
 
 .uploader.btn {
@@ -133,6 +139,10 @@ strong {
 }
 #messages {
   margin-bottom: 0.5rem;
+}
+
+#messages strong {
+  width: 80%;
 }
 
 #file-upload-btn {
