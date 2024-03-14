@@ -4,17 +4,20 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Uploadfile } from '../components';
 import { createEvent, getByIdEvents, updateEvents } from '../services/Events.service';
-import { useCreateEventError } from '../hooks';
-import { Navigate, useParams } from 'react-router-dom';
+import { useCreateEventError, useUpdateEventError } from '../hooks';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../context/authContext';
 
 export const UpdateEvent = () => {
   const { register, handleSubmit, setValue } = useForm();
+  const { id } = useParams();
+  const { user } = useAuth();
   const [send, setSend] = useState(false);
   const [res, setRes] = useState({});
   const [okRegister, setOkRegister] = useState(null);
 
-  const { id } = useParams();
   const [eventId, setEventId] = useState(id);
+
   const getPrevData = async () => {
     const allEventData = await getByIdEvents(eventId);
 
@@ -33,10 +36,11 @@ export const UpdateEvent = () => {
 
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById('file-upload').files;
+
     if (inputFile.length != 0) {
       const customBody = {
         ...formData,
-        images: inputFile[0],
+        images: inputFile,
       };
 
       setSend(true);
@@ -54,11 +58,11 @@ export const UpdateEvent = () => {
   };
 
   useEffect(() => {
-    useCreateEventError(res, setOkRegister, setRes);
+    useUpdateEventError(res, setOkRegister, setRes);
   }, [res]);
 
   if (okRegister) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to={`/profile/${user._id}`} />;
   }
 
   return (
@@ -130,7 +134,7 @@ export const UpdateEvent = () => {
                 </label>
               </div>
             </label>
-            <Uploadfile registerForm={register} type="image" />
+            <Uploadfile registerForm={register} type="image" multipleUpload={true} />
           </div>
 
           <div className="btn_container">

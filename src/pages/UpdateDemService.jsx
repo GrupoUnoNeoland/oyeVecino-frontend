@@ -39,7 +39,7 @@ export const UpdateDemService = () => {
     if (inputFile.length != 0) {
       const customBody = {
         ...formData,
-        images: inputFile[0],
+        images: inputFile,
       };
       setSend(true);
 
@@ -94,7 +94,7 @@ export const UpdateDemService = () => {
             <label htmlFor="custom-input" className="custom-placeholder">
               Descripción del Comunicado
             </label>
-            <Uploadfile registerForm={register} type="image" />
+            <Uploadfile registerForm={register} type="image" multipleUpload={true} />
           </div>
 
           <div className="btn_container">
