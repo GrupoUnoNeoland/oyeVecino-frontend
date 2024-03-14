@@ -1,5 +1,10 @@
-div {
-  p {
-    margin-top: 20px;
+.timestamp-container {
+  width: 115px;
+  .timestamp {
+    /* margin-top: 20px; */
+    width: 100%;
+    opacity: 50%;
+    font-size: 14px;
+    text-align: end;
   }
 }

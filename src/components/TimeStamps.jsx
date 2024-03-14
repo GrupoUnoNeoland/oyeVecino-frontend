@@ -12,8 +12,8 @@ export const TimeStamps = ({ createdAt }) => {
   });
 
   return (
-    <div>
-      <p>{formatCreationDate}</p>
+    <div className="timestamp-container">
+      <p className="timestamp">{formatCreationDate}</p>
     </div>
   );
 };
