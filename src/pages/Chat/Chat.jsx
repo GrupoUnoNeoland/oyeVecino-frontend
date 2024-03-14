@@ -132,7 +132,7 @@ export const Chat = () => {
                     className="image-provider"
                   />
                 </div>
-                <h2>{chat?.userTwo[0]?.name}</h2>
+                <h3>{chat?.userTwo[0]?.name}</h3>
               </div>
             ) : (
               <div
@@ -169,7 +169,7 @@ export const Chat = () => {
                     className="image-provider"
                   />
                 </div>
-                <h2>{activeChat?.userTwo[0]?.name}</h2>
+                <h3>{activeChat?.userTwo[0]?.name}</h3>
               </div>
               <div className="messages">
                 {activeChat?.messages?.map((message) => (
@@ -206,6 +206,9 @@ export const Chat = () => {
           <div className="main-content">
             <section className="messages-container">
               <div className="messages-header-container">
+                <button className="messages-header-btn" onClick={() => setActiveChat()}>
+                  <span className="material-symbols-outlined">arrow_back</span>
+                </button>
                 <div className="image-provider-container">
                   <img
                     src={activeChat?.userOne[0]?.image}
@@ -213,7 +216,7 @@ export const Chat = () => {
                     className="image-provider"
                   />
                 </div>
-                <h2>{activeChat?.userOne[0]?.name}</h2>
+                <h3>{activeChat?.userOne[0]?.name}</h3>
               </div>
               <div className="messages">
                 {activeChat?.messages?.map((message) => (

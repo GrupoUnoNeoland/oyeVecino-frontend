@@ -11,7 +11,7 @@
 
 .actives-chats-container {
   width: 90%;
-  height: 100%;
+  height: 700px;
   border-radius: 20px;
   background-color: #f6f6f6;
   -webkit-box-shadow: 0px 0px 7px 1px rgba(207, 195, 207, 1);
@@ -28,7 +28,7 @@
 }
 
 .main-content {
-  height: 100%;
+  height: 700px;
   width: 90%;
   padding: 20px 20px 0 20px;
   background-color: #f6f6f6;
@@ -45,6 +45,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  position: relative;
 
   & .messages {
     width: 100%;
@@ -64,6 +65,7 @@
     justify-content: center;
     width: 100%;
     background-color: #f6f6f6;
+    position: absolute;
 
     form {
       width: 100%;
@@ -94,7 +96,7 @@
 
   & .messages-header-container {
     gap: 30px;
-    height: 120px;
+    /* height: 120px; */
     display: flex;
     align-items: center;
     width: 100%;
@@ -175,15 +177,26 @@
     padding-top: 110px;
     column-gap: 40px;
     position: initial;
+    /* background-color: #dec2260f; */
+  }
+
+  .messages-container {
+    position: relative;
+
+    & .messages-footer-container {
+      position: absolute;
+    }
   }
 
   .actives-chats-container {
+    height: 100%;
     width: 305px;
   }
 
   .main-content {
     flex: 1;
     position: initial;
+    height: 100%;
   }
 }
 
