@@ -124,14 +124,19 @@ export const CheckCode = () => {
     //al recargar pagina
     return <Navigate to="/login" />;
   }
-
   return (
     <div id="checkcode-container">
       <div className="form-wrap">
-        <h1>Verifica tu código</h1>
-        <p>Escribe el código enviado a tu correo</p>
+        <div className="form-title-container">
+          <h1>Verifica tu código</h1>
+          <p>Escribe el código enviado a tu correo</p>
+        </div>
+
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="user_container form-group">
+          <div className="user_container form-group info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Registration code
+            </label>
             <input
               className="input_user"
               type="text"
@@ -140,9 +145,6 @@ export const CheckCode = () => {
               autoComplete="false"
               {...register('confirmationCode', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Registration code
-            </label>
           </div>
 
           <div className="btn_container">
