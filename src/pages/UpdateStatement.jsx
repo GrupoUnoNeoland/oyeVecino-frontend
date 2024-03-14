@@ -5,15 +5,18 @@ import { useForm } from 'react-hook-form';
 import { Uploadfile } from '../components';
 
 import { Navigate, useParams } from 'react-router-dom';
-//import { useCreateStatementError } from '../hooks/useCreateStatementError';
+
 import { updateStatements, getByIdStatements } from '../services/Statement.service';
+import { useUpdateStatementError } from '../hooks';
+import { useAuth } from '../context/authContext';
 
 export const UpdateStatement = () => {
   const { id } = useParams();
+  const { user } = useAuth();
   const { register, handleSubmit, setValue } = useForm();
   const [send, setSend] = useState(false);
   const [res, setRes] = useState({});
-  //const [okRegister, setOkRegister] = useState(null);
+  const [okRegister, setOkRegister] = useState(null);
   const [statementId, setStatementId] = useState(id);
 
   const getPrevData = async () => {
@@ -51,13 +54,13 @@ export const UpdateStatement = () => {
     }
   };
 
-  // useEffect(() => {
-  //   useCreateStatementError(res, setOkRegister, setRes);
-  // }, [res]);
+  useEffect(() => {
+    useUpdateStatementError(res, setOkRegister, setRes);
+  }, [res]);
 
-  // if (okRegister) {
-  //   return <Navigate to="/dashboard" />;
-  // }
+  if (okRegister) {
+    return <Navigate to={`/profile/${user?._id}`} />;
+  }
 
   return (
     <div id="create-statement-container">
