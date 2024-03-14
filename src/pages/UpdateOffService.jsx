@@ -7,20 +7,23 @@ import { Uploadfile } from '../components';
 
 import { Navigate, useParams } from 'react-router-dom';
 import { getByIdService, updateServices } from '../services/service.service';
+import { useAuth } from '../context/authContext';
+import { useUpdateServiceError } from '../hooks';
 
 export const UpdateOffService = () => {
   const { id } = useParams();
+  const { user } = useAuth();
   const { register, handleSubmit, setValue } = useForm();
   const [send, setSend] = useState(false);
   const [res, setRes] = useState({});
-  //const [okRegister, setOkRegister] = useState(null);
+  const [okRegister, setOkRegister] = useState(null);
   const [serviceId, setServiceId] = useState(id);
 
   const getPrevData = async () => {
     const allServiceData = await getByIdService(serviceId);
 
     const serviceData = allServiceData.data;
-    console.log('serviceData', allServiceData);
+    console.log('serviceData:', allServiceData);
 
     setValue('title', serviceData.title);
     setValue('description', serviceData.description);
@@ -53,13 +56,13 @@ export const UpdateOffService = () => {
     }
   };
 
-  // useEffect(() => {
-  //   useCreateStatementError(res, setOkRegister, setRes);
-  // }, [res]);
+  useEffect(() => {
+    useUpdateServiceError(res, setOkRegister, setRes);
+  }, [res]);
 
-  // if (okRegister) {
-  //   return <Navigate to="/dashboard" />;
-  // }
+  if (okRegister) {
+    return <Navigate to={`/profile/${user?._id}`} />;
+  }
 
   return (
     <div id="create-statement-container">
