@@ -56,10 +56,15 @@ export const Request = () => {
   return (
     <div id="request-container">
       <div className="form-wrap">
-        <h1>Sign Up</h1>
-        <h3>Paso 2 de 2</h3>
-        <p>It’s the last step.</p>
+        <div className="form-title-container">
+          <h1>Verificación de vecino</h1>
+          <p>
+            Este es el último paso, comprobaremos que eres un vecino real de este barrio.
+          </p>
+        </div>
+
         <form onSubmit={handleSubmit(formSubmit)}>
+          <label>Comprobante de residencia</label>
           <Uploadfile registerForm={register} type="file" />
           <div className="btn_container">
             <button
