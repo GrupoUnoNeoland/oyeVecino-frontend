@@ -105,12 +105,12 @@ export const Uploadfile = ({ registerForm, type, multipleUpload = false }) => {
             className={type == 'image' ? 'fa fa-image' : 'fa fa-download'}
             aria-hidden="true"
           ></i>
-          <div className="divSelect">Select a {type} or drag here</div>
+          <div className="divSelect">Selecciona una {type} o arrástrala aquí</div>
           <div id="notimage" className="hidden">
-            Please select an file
+             Por favor selecciona una imagen
           </div>
           <span id="file-upload-btn" className="hidden btn btn-primary">
-            Select a file
+            Selecciona una imagen
           </span>
         </div>
         <div id="response" className="hidden"></div>

@@ -11,7 +11,6 @@ export const Createservice = ({ type }) => {
   const [send, setSend] = useState(false);
   const [res, setRes] = useState({});
   const [okRegister, setOkRegister] = useState(null);
-
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById('file-upload').files;
     if (inputFile.length != 0) {
@@ -40,15 +39,33 @@ export const Createservice = ({ type }) => {
   }, [res]);
 
   if (okRegister) {
-    return <Navigate to="/dashboard?type=demanServ" />;
+    return <Navigate to="/dashboard" />;
   }
 
   return (
     <div id="create-service-container">
       <div className="form-wrap">
-        <h1>Crear servicio</h1>
+        <div className="form-title-container">
+          {type == 'demanded' ? (
+            <h1>Crear una petición de un servicio</h1>
+          ) : (
+            <h1>Crear una oferta de tu servicio</h1>
+          )}
+
+          {type == 'demanded' ? (
+            <p>Aqui podras crear el servicio que demandas encontrar en tus vecinos.</p>
+          ) : (
+            <p>
+              Aqui podras crear el servicio que estas dispuesto a ofrecer a tus vecinos.
+            </p>
+          )}
+        </div>
+
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="title_container">
+          <div className="title_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Título
+            </label>
             <input
               className="input_title"
               type="text"
@@ -57,11 +74,11 @@ export const Createservice = ({ type }) => {
               autoComplete="false"
               {...register('title', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Título
-            </label>
           </div>
-          <div className="description_container">
+          <div className="description_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Descripción del servicio
+            </label>
             <input
               className="input_description"
               type="text"
@@ -70,9 +87,7 @@ export const Createservice = ({ type }) => {
               autoComplete="false"
               {...register('description', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Descripción del servicio
-            </label>
+
             <Uploadfile registerForm={register} type="image" multipleUpload={true} />
           </div>
 
