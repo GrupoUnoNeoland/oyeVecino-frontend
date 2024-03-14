@@ -42,7 +42,9 @@ export const getByIdEvents = async (eventId) => {
 
 export const updateEvents = async (formData, idEvent) => {
   const APIEvent = extraConfig();
-  return APIEvent.patch(`/events/update/event/${idEvent}`, formData)
+  return APIEvent.patch(`/events/update/event/${idEvent}`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  })
     .then((res) => res)
     .catch((error) => error);
 };
