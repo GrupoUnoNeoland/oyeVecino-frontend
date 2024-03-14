@@ -67,9 +67,14 @@ export const Header = () => {
           )}
           {user && (
             <>
-              <NavLink to="/profile">
+              <NavLink to={`/profile/${user._id}`}>
                 <div className="header-nav__item--mobile" onClick={handleClickMenu}>
                   PROFILE
+                </div>
+              </NavLink>
+              <NavLink to="/dashboard">
+                <div className="header-nav__item--mobile" onClick={handleClickMenu}>
+                  DASHBOARD
                 </div>
               </NavLink>
               <NavLink to="/login">
