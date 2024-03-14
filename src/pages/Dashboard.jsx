@@ -77,6 +77,8 @@ export const Dashboard = () => {
   useEffect(() => {
     if (dashboardType) {
       handleClickBtnDashboard(dashboardType);
+    } else {
+      handleClickBtnDashboard('ofredServ');
     }
   }, []);
   return (
