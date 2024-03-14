@@ -232,43 +232,48 @@ export const Profile = () => {
                 </div>
               </div>
             ))}
-          {btnClicked == 'Mis Favoritos' &&
-            users?.eventsFav?.map((event) => (
-              <div key={event._id} className="dashboard__card">
-                <div className="card__header">
-                  <img src={event.images} alt={event.name} referrerPolicy="no-referrer" />
-                </div>
-                <div className="card__body">
-                  <h4>{event.title}</h4>
-
-                  <div className="like-button liked">
-                    <Link to={`/event/${event._id}`}>
-                      <span className="heart-icon">&#x2665;</span>
-                    </Link>
+          {btnClicked === 'Mis Favoritos' && (
+            <>
+              {users?.eventsFav?.map((event) => (
+                <div key={event._id} className="dashboard__card">
+                  <div className="card__header">
+                    <img
+                      src={event.images}
+                      alt={event.name}
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="card__body">
+                    <h4>{event.title}</h4>
+                    <div className="like-button liked">
+                      <Link to={`/event/${event._id}`}>
+                        <span className="heart-icon">&#x2665;</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          {users?.statementsFav?.map((statement) => (
-            <div key={statement._id} className="dashboard__card">
-              <div className="card__header">
-                <img
-                  src={statement.images[0]}
-                  alt={statement.name}
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="card__body">
-                <h4>{statement.title}</h4>
-
-                <div className="like-button liked">
-                  <Link to={`/statement/${statement._id}`}>
-                    <span className="heart-icon">&#x2665;</span>
-                  </Link>
+              ))}
+              {users?.statementsFav?.map((statement) => (
+                <div key={statement._id} className="dashboard__card">
+                  <div className="card__header">
+                    <img
+                      src={statement.images[0]}
+                      alt={statement.name}
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="card__body">
+                    <h4>{statement.title}</h4>
+                    <div className="like-button liked">
+                      <Link to={`/statement/${statement._id}`}>
+                        <span className="heart-icon">&#x2665;</span>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              ))}
+            </>
+          )}
           {btnClicked == 'Mis Eventos' &&
             users?.events?.map((event) => (
               <div key={event._id} className="dashboard__card">
