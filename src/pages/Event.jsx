@@ -110,13 +110,13 @@ export const Event = () => {
               <p>{event?.description}</p>
             </div>
             <div className="event_adress">
-              <p>{event?.adress}</p>
+              <p>DIRECCIÓN: {event?.adress}</p>
             </div>
             <div className="event_timetable">
-              <p>{event?.timetable}</p>
+              <p>HORARIO: {event?.timetable}</p>
             </div>
 
-            <p className="event_photos-title">FOTOS</p>
+            <p className="event_photos-title"></p>
             {event?.images?.map((image, index) => (
               <div key={index} className="event-photo_container">
                 <img src={image} alt="image" />
