@@ -41,74 +41,67 @@ export const Login = () => {
   }
   return (
     <div id="login-container">
-      <div className="vecinos">
-        <img
-          className="imageLogin"
-          src="https://res.cloudinary.com/dqiveomlb/image/upload/v1709666771/APP/composition-login_vqlaqf.png"
-          alt="vecindario"
-        />
-        {/* <div className="mostard-square"></div> */}
-      </div>
-      <div className="form-container">
-        <div className="form-wrap">
-          <h1>Sign In</h1>
-          <form onSubmit={handleSubmit(formSubmit)}>
-            <div className="email_container form-group">
-              <input
-                className="input_user"
-                type="email"
-                id="email"
-                name="email"
-                autoComplete="false"
-                {...register('email', { required: true })}
-              />
-              <label htmlFor="custom-input" className="custom-placeholder">
-                email
-              </label>
-            </div>
-            <div className="password_container form-group">
-              <input
-                className="input_user"
-                type="password"
-                id="password"
-                name="password"
-                autoComplete="false"
-                {...register('password', { required: true })}
-              />
-              <label htmlFor="custom-input" className="custom-placeholder">
-                password
-              </label>
-            </div>
-            <div className="btn_container">
-              <button
-                className="btn"
-                type="submit"
-                disabled={send}
-                style={{ background: send ? '#4b4848' : '#000000' }}
-              >
-                LOGIN
-              </button>
-            </div>
-            <div>
-              <p className="bottom-text">
-                <small>Have you forgotten the password?</small>
-              </p>
-              <p className="bottom-text">
-                <small>
-                  <Link to="/forgotpassword" className="anchorCustom">
-                    Change password
-                  </Link>
-                </small>
-              </p>
-            </div>
-          </form>
-          <div className="footerForm">
-            <p className="parrafoLogin">Are you not registered?</p>
-            <p className="parrafoLogin">
-              <Link to="/register">Register Here</Link>
+      <div className="form-wrap">
+        <div className="form-title-container">
+          <h1>Login</h1>
+          <p>Logueate y ¡No te pierdas nada vecino!</p>
+        </div>
+
+        <form onSubmit={handleSubmit(formSubmit)}>
+          <div className="email_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              email
+            </label>
+            <input
+              className="input_user"
+              type="email"
+              id="email"
+              name="email"
+              autoComplete="false"
+              {...register('email', { required: true })}
+            />
+          </div>
+          <div className="password_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              password
+            </label>
+            <input
+              className="input_user"
+              type="password"
+              id="password"
+              name="password"
+              autoComplete="false"
+              {...register('password', { required: true })}
+            />
+          </div>
+          <div className="btn_container">
+            <button
+              className="btn"
+              type="submit"
+              disabled={send}
+              style={{ background: send ? '#4b4848' : '#000000' }}
+            >
+              Login
+            </button>
+          </div>
+          <div>
+            <p className="bottom-text">
+              <small>Have you forgotten the password?</small>
+            </p>
+            <p className="bottom-text">
+              <small>
+                <Link to="/forgotpassword" className="anchorCustom">
+                  Change password
+                </Link>
+              </small>
             </p>
           </div>
-        </div>
+        </form>
+      </div>
+      <div className="footerForm">
+        <p className="parrafoLogin">
+          Are you not registered? <Link to="/register">Register Here</Link>
+        </p>
       </div>
     </div>
   );
