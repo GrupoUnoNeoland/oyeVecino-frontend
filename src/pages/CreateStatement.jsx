@@ -39,15 +39,25 @@ export const CreateStatement = () => {
   }, [res]);
 
   if (okRegister) {
-    return <Navigate to="/dashboard?type=statem" />;
+    return <Navigate to="/dashboard" />;
   }
 
   return (
     <div id="create-statement-container">
       <div className="form-wrap">
-        <h1>Crear comunicado</h1>
+        <div className="form-title-container">
+          <h1>Crear comunicado</h1>
+          <p>
+            Crea un comunicado para tus vecinos estar informados de las últimas novedades
+            del barrio.
+          </p>
+        </div>
+
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="title_container">
+          <div className="title_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Título
+            </label>
             <input
               className="input_title"
               type="text"
@@ -56,11 +66,11 @@ export const CreateStatement = () => {
               autoComplete="false"
               {...register('title', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Título
-            </label>
           </div>
-          <div className="description_container">
+          <div className="description_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Descripción del Comunicado
+            </label>
             <input
               className="input_description"
               type="text"
@@ -69,10 +79,8 @@ export const CreateStatement = () => {
               autoComplete="false"
               {...register('description', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Descripción del Comunicado
-            </label>
-            <Uploadfile registerForm={register} type="image" multipleUpload={true} />
+
+            <Uploadfile registerForm={register} type="image" />
           </div>
 
           <div className="btn_container">
