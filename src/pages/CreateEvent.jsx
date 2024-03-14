@@ -18,9 +18,10 @@ export const CreateEvent = () => {
     if (inputFile.length != 0) {
       const customBody = {
         ...formData,
-        images: inputFile[0],
+        images: inputFile,
       };
 
+      console.log(customBody);
       setSend(true);
       setRes(await createEvent(customBody));
       setSend(false);
@@ -112,7 +113,7 @@ export const CreateEvent = () => {
                 </label>
               </div>
             </label>
-            <Uploadfile registerForm={register} type="image" />
+            <Uploadfile registerForm={register} type="image" multipleUpload={true} />
           </div>
 
           <div className="btn_container">

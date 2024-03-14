@@ -2,7 +2,7 @@ import './Uploadfile.css';
 
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-export const Uploadfile = ({ registerForm, type }) => {
+export const Uploadfile = ({ registerForm, type, multipleUpload = false }) => {
   const { register, handleSubmit } = useForm();
   const ekUpload = () => {
     const Init = () => {
@@ -25,7 +25,10 @@ export const Uploadfile = ({ registerForm, type }) => {
 
       // Cancel event and hover styling
       fileDragHover(e);
-
+      if (multipleUpload) {
+        let thumbnailsContainer = document.getElementById('thumbnails-container');
+        thumbnailsContainer.innerHTML = '';
+      }
       // Process all File objects
       for (let i = 0, f; (f = files[i]); i++) {
         parseFile(f);
@@ -48,9 +51,20 @@ export const Uploadfile = ({ registerForm, type }) => {
         document.getElementById('start').classList.add('hidden');
         document.getElementById('response').classList.remove('hidden');
         document.getElementById('notimage').classList.add('hidden');
-        // Thumbnail Preview
-        document.getElementById('file-image').classList.remove('hidden');
-        document.getElementById('file-image').src = URL.createObjectURL(file);
+        if (multipleUpload) {
+          // Create thumbnail element
+          let thumbnail = document.createElement('img');
+          thumbnail.src = URL.createObjectURL(file);
+          thumbnail.classList.add('thumbnail');
+
+          // Append thumbnail to container
+          let thumbnailsContainer = document.getElementById('thumbnails-container');
+          thumbnailsContainer.appendChild(thumbnail);
+        } else {
+          // For single upload, display the selected image
+          document.getElementById('file-image').classList.remove('hidden');
+          document.getElementById('file-image').src = URL.createObjectURL(file);
+        }
       } else {
         document.getElementById('file-image').classList.add('hidden');
         document.getElementById('notimage').classList.remove('hidden');
@@ -77,10 +91,14 @@ export const Uploadfile = ({ registerForm, type }) => {
         type="file"
         name="image"
         accept="image/*,.pdf"
+        multiple={multipleUpload}
         {...registerForm}
       />
 
       <label htmlFor="file-upload" id="file-drag">
+        {multipleUpload && (
+          <div id="thumbnails-container" className="thumbnails-container"></div>
+        )}
         <img id="file-image" src="#" alt="Preview" className="hidden" />
         <div id="start">
           <i

@@ -17,7 +17,7 @@ export const Createservice = ({ type }) => {
     if (inputFile.length != 0) {
       const customBody = {
         ...formData,
-        images: inputFile[0],
+        images: inputFile,
         type: type,
       };
       setSend(true);
@@ -73,7 +73,7 @@ export const Createservice = ({ type }) => {
             <label htmlFor="custom-input" className="custom-placeholder">
               Descripción del servicio
             </label>
-            <Uploadfile registerForm={register} type="image" />
+            <Uploadfile registerForm={register} type="image" multipleUpload={true} />
           </div>
 
           <div className="btn_container">
