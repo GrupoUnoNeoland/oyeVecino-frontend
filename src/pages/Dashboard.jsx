@@ -79,7 +79,6 @@ export const Dashboard = () => {
       handleClickBtnDashboard(dashboardType);
     }
   }, []);
-
   return (
     <div id="dashboard-container">
       <section className="dashboard__buttons">
@@ -108,12 +107,18 @@ export const Dashboard = () => {
           Eventos
         </button>
       </section>
-      <h2 className="dashboard__content-title">{btnClicked}</h2>
-      {content != null ? (
-        <button onClick={() => handleClickBtnCreate(btnClicked)}>
+
+      <div className="container-crear">
+        <h2 className="dashboard__content-title">{btnClicked}</h2>
+
+        <button
+          onClick={() => handleClickBtnCreate(btnClicked)}
+          className="dashboard__button dashboard__button_relative"
+        >
           Crear {btnClicked}
         </button>
-      ) : null}
+      </div>
+
       <section className="dashboard__content">
         {content != null &&
           content.item == 'service' &&
@@ -124,7 +129,10 @@ export const Dashboard = () => {
               </div>
               <div className="card__body">
                 <h4>{item.title}</h4>
-                <p>{item.description}</p>
+                <div className="descripcion">
+                  <p>{item.description}</p>
+                </div>
+
                 <Link to={`/service/${item._id}`}>
                   <p className="card__body-detail">Ver más...</p>
                 </Link>
@@ -140,7 +148,10 @@ export const Dashboard = () => {
               </div>
               <div className="card__body">
                 <h4>{item.title}</h4>
-                <p>{item.description}</p>
+                <div className="descripcion">
+                  <p>{item.description}</p>
+                </div>
+
                 <Link to={`/statement/${item._id}`}>
                   <p className="card__body-detail">Ver más...</p>
                 </Link>
@@ -156,7 +167,9 @@ export const Dashboard = () => {
               </div>
               <div className="card__body">
                 <h4>{item.title}</h4>
-                <p>{item.description}</p>
+                <div className="descripcion">
+                  <p>{item.description}</p>
+                </div>
                 <Link to={`/event/${item._id}`}>
                   <p className="card__body-detail">Ver más...</p>
                 </Link>
