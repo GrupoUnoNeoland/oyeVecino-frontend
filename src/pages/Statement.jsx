@@ -173,8 +173,9 @@ export const Statement = () => {
                 comments.map((item, index) => (
                   <div key={index} className="comment_allcoment">
                     <div className="comment_user-photo">
-                      <img src={item.owner.image} alt="image-avatar" />
+                      <img src={item?.owner.image} alt="image-avatar" />
                     </div>
+                    <div className="comment-user-name">{item?.owner.name}</div>
                     <div className="comment_infos">
                       <div className="comment_text">{item.content}</div>
                       <TimeStamps createdAt={item.createdAt} />

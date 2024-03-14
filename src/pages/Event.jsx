@@ -172,6 +172,7 @@ export const Event = () => {
                     <div className="comment_user-photo">
                       <img src={item?.owner?.image} alt="image-avatar" />
                     </div>
+                    <div className="comment-user-name">{item?.owner?.name}</div>
                     <div className="comment_infos">
                       <div className="comment_text">{item?.content}</div>
                       <TimeStamps createdAt={item?.createdAt} />
