@@ -1,6 +1,6 @@
 #header-container {
   background-color: #f6f6f6;
-  min-height: 10vh;
+  height: 10vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
