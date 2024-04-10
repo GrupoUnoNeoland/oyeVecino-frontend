@@ -235,18 +235,11 @@ export const Register = () => {
               Register
             </button>
           </div>
-          <p className="bottom-text">
-            <small>
-              By clicking the Sign Up button, you agree to our{' '}
-              <Link className="anchorCustom">Terms & Conditions</Link> and{' '}
-              <Link className="anchorCustom">Privacy Policy</Link>.
-            </small>
-          </p>
         </form>
       </div>
       <div className="footerForm">
         <p className="parrafoLogin">
-          Already have an account? <Link to="/login">Login Here</Link>
+          ¿Ya estas registrado? <Link to="/login">Logueate aqui</Link>
         </p>
       </div>
     </div>

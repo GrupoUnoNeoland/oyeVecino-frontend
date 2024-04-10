@@ -15,6 +15,7 @@ export const UpdateEvent = () => {
   const [send, setSend] = useState(false);
   const [res, setRes] = useState({});
   const [okRegister, setOkRegister] = useState(null);
+  const [data, setData] = useState(null);
 
   const [eventId, setEventId] = useState(id);
 
@@ -29,6 +30,7 @@ export const UpdateEvent = () => {
     setValue('date', eventData.date);
     setValue('timetable', eventData.timetable);
     setValue('price', eventData.price);
+    setData(eventData);
   };
   useEffect(() => {
     getPrevData(id);
@@ -49,7 +51,7 @@ export const UpdateEvent = () => {
     } else {
       const customBody = {
         ...formData,
-        images: [''],
+        images: [...data.images],
       };
       setSend(true);
       setRes(await updateEvents(customBody, eventId));
@@ -68,9 +70,16 @@ export const UpdateEvent = () => {
   return (
     <div id="create-event-container">
       <div className="form-wrap">
-        <h1>Modificar Evento</h1>
+        <div className="form-title-container">
+          <h1>Modificar evento</h1>
+          <p>Introduzca los nuevo datos de tu evento.</p>
+        </div>
+
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="title_container">
+          <div className="title_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Título
+            </label>
             <input
               className="input_title"
               type="text"
@@ -79,61 +88,62 @@ export const UpdateEvent = () => {
               autoComplete="false"
               {...register('title', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Título
-            </label>
           </div>
-          <div className="description_container">
-            <input
-              className="input_description"
-              type="text"
-              id="description"
+          <div className="description_container info_container">
+            <label htmlFor="description" className="label-description">
+              Descripción
+            </label>
+            <textarea
+              className="input_user_textArea"
               name="description"
-              autoComplete="false"
-              {...register('description', { required: true })}
+              id="description"
+              rows="7"
+              cols="28"
+              {...register('description')}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Descripción del Evento
-              <div className="adress_container">
-                <input
-                  className="input_adress"
-                  type="text"
-                  id="adress"
-                  name="adress"
-                  autoComplete="false"
-                  {...register('adress', { required: true })}
-                />
+
+            <div className="adress_container info_container">
+              <label htmlFor="custom-input" className="custom-placeholder">
+                Dirección
+              </label>
+              <input
+                className="input_adress"
+                type="text"
+                id="adress"
+                name="adress"
+                autoComplete="false"
+                {...register('adress', { required: true })}
+              />
+            </div>
+            <div className="dateTime_event">
+              <div className="date_container info_container">
                 <label htmlFor="custom-input" className="custom-placeholder">
-                  Dirección
+                  Fecha del evento
                 </label>
-              </div>
-              <div className="date_container">
                 <input
                   className="input_date"
-                  type="text"
+                  type="date"
                   id="date"
                   name="date"
                   autoComplete="false"
                   {...register('date', { required: true })}
                 />
-                <label htmlFor="custom-input" className="custom-placeholder">
-                  Fecha del evento
-                </label>
               </div>
-              <div className="timetable_container">
+              <div className="timetable_container info_container">
+                <label htmlFor="custom-input" className="custom-placeholder">
+                  Horario del evento
+                </label>
                 <input
                   className="input_timetable"
-                  type="text"
+                  type="time"
                   id="timetable"
                   name="timetable"
                   autoComplete="false"
                   {...register('timetable', { required: true })}
                 />
-                <label htmlFor="custom-input" className="custom-placeholder">
-                  Horario del evento
-                </label>
               </div>
-            </label>
+            </div>
+
             <Uploadfile registerForm={register} type="image" multipleUpload={true} />
           </div>
 

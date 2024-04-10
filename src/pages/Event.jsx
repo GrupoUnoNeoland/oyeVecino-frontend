@@ -112,6 +112,9 @@ export const Event = () => {
             <div className="event_adress">
               <p>DIRECCIÓN: {event?.adress}</p>
             </div>
+            <div className="event_adress">
+              <p>DÍA: {event?.date}</p>
+            </div>
             <div className="event_timetable">
               <p>HORARIO: {event?.timetable}</p>
             </div>
@@ -169,10 +172,12 @@ export const Event = () => {
               {comments &&
                 comments.map((item, index) => (
                   <div key={index} className="comment_allcoment">
-                    <div className="comment_user-photo">
-                      <img src={item?.owner?.image} alt="image-avatar" />
+                    <div className="comment-user">
+                      <div className="comment_user-photo">
+                        <img src={item?.owner?.image} alt="image-avatar" />
+                      </div>
+                      <div className="comment-user-name">{item?.owner?.name}</div>
                     </div>
-                    <div className="comment-user-name">{item?.owner?.name}</div>
                     <div className="comment_infos">
                       <div className="comment_text">{item?.content}</div>
                       <TimeStamps createdAt={item?.createdAt} />

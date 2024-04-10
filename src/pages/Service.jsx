@@ -96,10 +96,19 @@ export const Service = () => {
           </div>
           <div className="service_container-body">
             <h2 className="service_title">{service.title}</h2>
+            <div className="comment_stars">
+              {service?.type == 'offered' ? (
+                <Rating
+                  value={rating}
+                  disabled={rating != 0 ? true : false}
+                  onChange={(e) => setRating(e.value)}
+                  cancel={false}
+                />
+              ) : null}
+            </div>
             <div className="service_description">
               <p>{service.description}</p>
             </div>
-            <p className="service_photos-title">FOTOS</p>
             {service.images.map((image, index) => (
               <div key={index} className="service-photo_container">
                 <img src={image} alt="image" />
@@ -122,7 +131,7 @@ export const Service = () => {
                   </div>
                 </form>
               )}
-              <h2>Comentário Público</h2>
+              <h2>Comentario Público</h2>
               <form onSubmit={handleSubmit(formSubmit)}>
                 <div className="comment_input">
                   <div className="comment_avatar">
@@ -136,28 +145,19 @@ export const Service = () => {
                     {...register('content', { required: true })}
                   />
                 </div>
-                <div className="comment_stars">
-                  {service?.type == 'offered' ? (
-                    <Rating
-                      value={rating}
-                      disabled={rating != 0 ? true : false}
-                      onChange={(e) => setRating(e.value)}
-                      cancel={false}
-                    />
-                  ) : null}
-                </div>
                 <button type="submit">Comentar</button>
               </form>
               {comments &&
                 comments.map((item, index) => (
                   <div key={index} className="comment_allcoment">
-                    <div className="comment_user-photo">
-                      <img src={item?.owner?.image} alt="image-avatar" />
+                    <div className="comment-user">
+                      <div className="comment_user-photo">
+                        <img src={item?.owner?.image} alt="image-avatar" />
+                      </div>
+                      <div className="comment-user-name">{item?.owner?.name}</div>
                     </div>
-                    <div className="comment-user-name">{item?.owner?.name}</div>
                     <div className="comment_infos">
                       <div className="comment_text">{item?.content}</div>
-
                       <TimeStamps createdAt={item?.createdAt} />
                     </div>
                   </div>

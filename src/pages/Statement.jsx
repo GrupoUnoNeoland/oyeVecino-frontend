@@ -134,7 +134,7 @@ export const Statement = () => {
                   &#x2665;
                 </span>
               </button>
-              <p>{statement?.likes?.length}</p>
+              <p className="like_button_number">{statement?.likes?.length}</p>
             </div>
             <div className="comments_container">
               <button onClick={() => handleClickChat(statement?.owner[0]?._id)}>
@@ -172,11 +172,13 @@ export const Statement = () => {
               {comments &&
                 comments.map((item, index) => (
                   <div key={index} className="comment_allcoment">
-                    <div className="comment_user-photo">
-                      <img src={item?.owner.image} alt="image-avatar" />
+                    <div className="comment-user">
+                      <div className="comment_user-photo">
+                        <img src={item.owner.image} alt="image-avatar" />
+                      </div>
                     </div>
-                    <div className="comment-user-name">{item?.owner.name}</div>
                     <div className="comment_infos">
+                      <div className="comment-user-name">{item?.owner?.name}</div>
                       <div className="comment_text">{item.content}</div>
                       <TimeStamps createdAt={item.createdAt} />
                     </div>

@@ -67,9 +67,16 @@ export const UpdateDemService = () => {
   return (
     <div id="create-statement-container">
       <div className="form-wrap">
-        <h1>Editar Servicio Demandado</h1>
+        <div className="form-title-container">
+          <h1>Editar Servicio Demandado</h1>
+          <p>Introduzca los datos nuevos que desea actualizar.</p>
+        </div>
+
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="title_container">
+          <div className="title_container info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Título
+            </label>
             <input
               className="input_title"
               type="text"
@@ -78,24 +85,22 @@ export const UpdateDemService = () => {
               autoComplete="false"
               {...register('title', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Título
-            </label>
           </div>
-          <div className="description_container">
-            <input
-              className="input_description"
-              type="text"
-              id="description"
+          <div className="description_container info_container">
+            <label htmlFor="description" className="label-description">
+              Descripción
+            </label>
+            <textarea
+              className="input_user_textArea"
               name="description"
-              autoComplete="false"
-              {...register('description', { required: true })}
+              id="description"
+              rows="7"
+              cols="28"
+              {...register('description')}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Descripción del Comunicado
-            </label>
-            <Uploadfile registerForm={register} type="image" multipleUpload={true} />
           </div>
+
+          <Uploadfile registerForm={register} type="image" multipleUpload={true} />
 
           <div className="btn_container">
             <button

@@ -86,12 +86,12 @@ export const Login = () => {
           </div>
           <div>
             <p className="bottom-text">
-              <small>Have you forgotten the password?</small>
+              <small>¿No recuerdas tu contraseña?</small>
             </p>
             <p className="bottom-text">
               <small>
                 <Link to="/forgotpassword" className="anchorCustom">
-                  Change password
+                  Cambiar contraseña
                 </Link>
               </small>
             </p>
@@ -100,7 +100,7 @@ export const Login = () => {
       </div>
       <div className="footerForm">
         <p className="parrafoLogin">
-          Are you not registered? <Link to="/register">Register Here</Link>
+          ¿No estas registrado? <Link to="/register">Registrate aqui</Link>
         </p>
       </div>
     </div>

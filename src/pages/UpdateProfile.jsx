@@ -89,10 +89,16 @@ export const UpdateProfile = () => {
   return (
     <>
       <div className="form-wrap">
-        <h1>Change your data profile ♻</h1>
-        <p>Please, enter your new data profile</p>
+        <div className="form-title-container">
+          <h1>Cambiar la informacion personal</h1>
+          <p>Por favor, introduzca su datos actualizados.</p>
+        </div>
+
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="user_container">
+          <div className="info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Username
+            </label>
             <input
               className="input_user"
               type="text"
@@ -102,11 +108,13 @@ export const UpdateProfile = () => {
               defaultValue={defaultData?.name}
               {...register('name')}
             />
-            {console.log(defaultData)}
+          </div>
 
+          <div className="info_container">
             <label htmlFor="custom-input" className="custom-placeholder">
-              Username
+              Adress
             </label>
+
             <input
               className="input_user"
               type="text"
@@ -116,38 +124,36 @@ export const UpdateProfile = () => {
               defaultValue={defaultData?.adress}
               {...register('adress')}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Adress
+          </div>
+
+          <div className="description_container info_container">
+            <label htmlFor="description" className="label-description">
+              Descripción
             </label>
-            <input
-              className="input_user"
-              type="text"
-              id="description"
+            <textarea
+              className="input_user_textArea"
               name="description"
-              autoComplete="false"
+              id="description"
+              rows="7"
+              cols="28"
               defaultValue={defaultData?.description}
               {...register('description')}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Description
+          </div>
+          <div className="telephone_container info_container">
+            <label htmlFor="telephone" className="label-telephone">
+              Teléfono
             </label>
-            <select id="genero" name="gender" {...register('gender', { required: true })}>
-              <option value="hombre">Hombre</option>
-              <option value="mujer">Mujer</option>
-              <option value="otros">Otros</option>
-            </select>
             <input
               className="input_user"
               type="text"
               name="telephone"
               id="telephone"
-              defaultValue={defaultData?.telephone}
+              defaultValue={defaultData.telephone}
               {...register('telephone')}
             />
-            <label htmlFor="telephone" className="label-telephone">
-              Teléfono
-            </label>
           </div>
+
           <Uploadfile registerForm={register} type="image" />
           <div className="btn_container">
             <button

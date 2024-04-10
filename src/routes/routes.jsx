@@ -23,6 +23,7 @@ import {
   UpdateOffService,
   UpdateEvent,
   Chat,
+  DataProfile,
 } from '../pages/index';
 import { ProtectedRequestChildren } from '../components/ProtectedRoute/ProtectedRequestChildren';
 import { ProtectedCheckChildren } from '../components/ProtectedRoute/ProtectedCheckChildren';
@@ -186,6 +187,14 @@ export const router = createBrowserRouter([
           </Protected>
         ),
         children: [
+          {
+            path: '/profile/:id',
+            element: (
+              <Protected>
+                <DataProfile />
+              </Protected>
+            ),
+          },
           {
             path: '/profile/:id/changePassword',
             element: (

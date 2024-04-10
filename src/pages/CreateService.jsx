@@ -77,20 +77,19 @@ export const Createservice = ({ type }) => {
             />
           </div>
           <div className="description_container info_container">
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Descripción del servicio
+            <label htmlFor="description" className="label-description">
+              Descripción
             </label>
-            <input
-              className="input_description"
-              type="text"
-              id="description"
+            <textarea
+              className="input_user_textArea"
               name="description"
-              autoComplete="false"
-              {...register('description', { required: true })}
+              id="description"
+              rows="7"
+              cols="28"
+              {...register('description')}
             />
-
-            <Uploadfile registerForm={register} type="image" multipleUpload={true} />
           </div>
+          <Uploadfile registerForm={register} type="image" multipleUpload={true} />
 
           <div className="btn_container">
             <button

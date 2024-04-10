@@ -52,15 +52,20 @@ export const Chat = () => {
   };
   const formSubmit = async (formData) => {
     formData.type = 'private';
+    console.log('----', recipientMessageId);
 
     setResMessage(await createMessage(formData, recipientMessageId));
     setMessageSend(true);
   };
 
   const handleClickChatItem = (chatId, recipientId) => {
+    let allChats = document.querySelectorAll('.chat-item');
+    allChats.forEach((chat) => (chat.style.backgroundColor = '#f6f6f6'));
     // if (!isMobile) {
     setRecipientMessageId(recipientId);
     setActiveChat(userLogged?.chats?.find((chat) => chat?._id == chatId));
+    let chatActive = document.getElementById(`${chatId}`);
+    chatActive && (chatActive.style.backgroundColor = '#e3ce5497');
     // } else {
     //   console.log('MB');
     // }
@@ -118,12 +123,20 @@ export const Chat = () => {
           <h2>Tus Chats</h2>
         </div>
         <div className="chats">
-          {userLogged?.chats?.map((chat) =>
+          {userLogged?.chats?.map((chat, index) =>
             chat?.userOne[0]?._id == user?._id ? (
               <div
                 className="chat-item"
-                key={chat._id}
-                onClick={() => handleClickChatItem(chat._id, chat?.userOne[0]._id)}
+                id={chat._id}
+                key={chat.toString() + index}
+                onClick={() =>
+                  handleClickChatItem(
+                    chat._id,
+                    chat?.userOne[0]._id == user._id
+                      ? chat?.userTwo[0]._id
+                      : chat?.userOne[0]._id,
+                  )
+                }
               >
                 <div className="image-provider-container">
                   <img

@@ -70,16 +70,16 @@ export const CreateEvent = () => {
             />
           </div>
           <div className="description_container info_container">
-            <label htmlFor="custom-input" className="custom-placeholder">
+            <label htmlFor="description" className="label-description">
               Descripción
             </label>
-            <input
-              className="input_description"
-              type="text"
-              id="description"
+            <textarea
+              className="input_user_textArea"
               name="description"
-              autoComplete="false"
-              {...register('description', { required: true })}
+              id="description"
+              rows="7"
+              cols="28"
+              {...register('description')}
             />
 
             <div className="adress_container info_container">

@@ -50,10 +50,19 @@ export const ChangePassword = () => {
   return (
     <>
       <div className="form-wrap">
-        <h1>Change your password ♻</h1>
-        <p>Please, enter your old and new passwords</p>
+        <div className="form-title-container">
+          <h1>Cambiar la contraseña</h1>
+          <p>
+            Por favor ingrese su nueva y antigua contraseña para poder actualizar su
+            información
+          </p>
+        </div>
+
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="password_container form-group">
+          <div className="password_container form-group info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Old password
+            </label>
             <input
               className="input_user"
               type="password"
@@ -62,11 +71,11 @@ export const ChangePassword = () => {
               autoComplete="false"
               {...register('password', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Old password
-            </label>
           </div>
-          <div className="newPassword_container form-group">
+          <div className="newPassword_container form-group info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              New password
+            </label>
             <input
               className="input_user"
               type="password"
@@ -75,11 +84,11 @@ export const ChangePassword = () => {
               autoComplete="false"
               {...register('newPassword', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              New password
-            </label>
           </div>
-          <div className="confirmPassword_container form-group">
+          <div className="confirmPassword_container form-group info_container">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Confirm new password
+            </label>
             <input
               className="input_user"
               type="password"
@@ -88,9 +97,6 @@ export const ChangePassword = () => {
               autoComplete="false"
               {...register('confirmPassword', { required: true })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Confirm new password
-            </label>
           </div>
           <div className="btn_container">
             <button

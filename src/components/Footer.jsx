@@ -71,7 +71,7 @@ export const Footer = () => {
             alt="linkedin logo"
           />
         </div>
-        <div className="condiciones">
+        {/* <div className="condiciones">
           <ul>
             <li>© 2024 oyeVecino</li>
             <li>Condiciones del servicio</li>
@@ -79,7 +79,7 @@ export const Footer = () => {
             <li>Ajustes de cookies</li>
             <li>Política de cookies</li>
           </ul>
-        </div>
+        </div> */}
       </footer>
     </div>
   );

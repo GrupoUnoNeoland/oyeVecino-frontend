@@ -19,3 +19,4 @@ export * from './UpdateOffService';
 export * from './UpdateDemService';
 export * from './UpdateEvent';
 export * from './Chat/Chat';
+export * from './DataProfile';

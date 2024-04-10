@@ -66,10 +66,6 @@ export const ForgotPassword = () => {
                 Change password
               </button>
             </div>
-
-            <p className="bottom-text">
-              <small>Enter your email to send you the new password</small>
-            </p>
           </form>
         </div>
       </div>
