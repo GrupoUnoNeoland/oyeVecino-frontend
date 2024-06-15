@@ -88,7 +88,8 @@
   padding: 1rem;
 }
 #profile-container {
-  padding-top: 10vh;
+  padding-top: 75px;
+
   & .profile_info_card {
     border-radius: 30px;
     display: flex;
