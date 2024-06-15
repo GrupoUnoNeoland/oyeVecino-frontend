@@ -4,7 +4,7 @@ import { updateToken } from '../utils/updateToken';
 
 export const extraConfig = () => {
   return axios.create({
-    baseURL: 'http://localhost:8080/api/v1/',
+    baseURL: 'https://oye-vecino-backend.vercel.app/',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -14,3 +14,5 @@ export const extraConfig = () => {
     timeout: 60000,
   });
 };
+
+// baseURL: 'http://localhost:8080/api/v1/',
