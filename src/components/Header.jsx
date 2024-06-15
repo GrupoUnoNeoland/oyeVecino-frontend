@@ -67,7 +67,7 @@ export const Header = () => {
           )}
           {user && (
             <>
-              <NavLink to="/profile">
+              <NavLink to={`/profile/${user._id}`}>
                 <div className="header-nav__item--mobile" onClick={handleClickMenu}>
                   PROFILE
                 </div>
